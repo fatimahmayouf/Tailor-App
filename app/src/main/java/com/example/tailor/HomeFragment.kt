@@ -32,7 +32,6 @@ class HomeFragment : Fragment() {
         when(item.itemId){
         R.id.ExploreFragment ->{findNavController().navigate(R.id.action_homeFragment_to_exploreFragment)}
         R.id.ProfileFragment -> {findNavController().navigate(R.id.action_homeFragment_to_profileFragment)}
-
         }
         return super.onOptionsItemSelected(item)
     }
