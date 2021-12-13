@@ -1,4 +1,4 @@
-package com.example.tailor
+package com.example.tailor.views
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

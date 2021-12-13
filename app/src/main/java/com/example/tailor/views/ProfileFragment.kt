@@ -1,4 +1,5 @@
-package com.example.tailor
+package com.example.tailor.views
+
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import com.example.tailor.databinding.FragmentProfileBinding
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -19,5 +21,13 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        /*requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.login_layout, LoginFragment())
+            .commit()
+ */
+    }
 
 }

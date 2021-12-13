@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/HomeFragment"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/home"
         />
     <item
-        android:id="@+id/ExploreFragment"
+        android:id="@+id/exploreFragment"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="@string/explore" />
     <item
-        android:id="@+id/ProfileFragment"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="@string/profile" />
 
