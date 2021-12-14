@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
@@ -23,9 +24,7 @@ class HomeFragmentAdapter(val context: Context) :
         override fun areContentsTheSame(oldItem: HomePhotoModel, newItem: HomePhotoModel): Boolean {
             return oldItem == newItem // update content or not
         }
-
     }
-
     private  val differ = AsyncListDiffer(this, DIFF_CALLBACK)
 
     override fun onCreateViewHolder(

@@ -12,6 +12,7 @@ class Validator {
             ".{8,}$" // anything, at least eight places though
 
     private val REGEX_EMAIL = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
+    private val REGEX_FULLNAME = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
 
 
     fun emailIsValid(email: String):Boolean{
@@ -19,6 +20,12 @@ class Validator {
 
         val matcher = pattern.matcher(email)
 
+        return matcher.matches()
+    }
+
+    fun fullNameIsValid(name:String):Boolean{
+        val pattern = Pattern.compile(REGEX_FULLNAME)
+        val matcher = pattern.matcher(name)
         return matcher.matches()
     }
 

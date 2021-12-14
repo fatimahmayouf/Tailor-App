@@ -20,6 +20,7 @@ class Splash : AppCompatActivity() {
             override fun onFinish() {
 
                 startActivity(intent)
+                finish()
             }
         }
         timer.start()
