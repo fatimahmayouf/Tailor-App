@@ -1,13 +1,11 @@
-package com.example.tailor.views
+package com.example.tailor.views.user
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import com.example.tailor.R
 import com.example.tailor.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -26,9 +24,11 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val registerFragment = RegisterFragment()
         binding.signUpLogBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.login_layout,registerFragment)
+                .commit()
 
         }
         val email = binding.emailLogEditText.text
@@ -40,7 +40,8 @@ class LoginFragment : Fragment() {
                     .addOnCompleteListener {
                             task -> if (task.isSuccessful){
                         Toast.makeText(requireContext(), "Logged in successfully", Toast.LENGTH_SHORT).show()
-                        requireActivity().supportFragmentManager.popBackStack()
+                       // requireActivity().supportFragmentManager.popBackStack()
+                        binding.loginLayout.visibility=View.GONE
                     }else{
                         Toast.makeText(requireContext(),task.exception!!.message.toString() , Toast.LENGTH_SHORT).show()
                     }

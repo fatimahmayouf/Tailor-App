@@ -13,7 +13,7 @@ interface PexelsExploreApi {
     @GET("search")
     suspend fun getProductExpolre(
         @Header("Authorization") key: String = API_KEY,
-        @Query("query") searchWords: String = "fashion model"
+        @Query("query") searchWords: String = "Fashion queen"
 
     ): Response<ExplorePhotoModel>
 }

@@ -8,11 +8,14 @@ import com.example.tailor.R
 import com.example.tailor.model.explore.Photo
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.contentValuesOf
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
 import com.example.tailor.databinding.ExploreItemLayoutBinding
+import com.example.tailor.views.OrderFragment
 
 private const val TAG = "ExploreAdapter"
 class ExploreAdapter(val context: Context) :
@@ -44,6 +47,14 @@ class ExploreAdapter(val context: Context) :
         val item = differ.currentList[position]
         holder.bind(item)
         Log.d(TAG,item.toString())
+
+        holder.itemView.setOnClickListener {
+            val orderFragment = OrderFragment()
+            val activity = it.context as AppCompatActivity
+            activity.supportFragmentManager.beginTransaction()
+                .replace(R.id.explore_layout,orderFragment)
+                .commit()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -52,11 +63,10 @@ class ExploreAdapter(val context: Context) :
     fun submitList(list: List<Photo>){
         differ.submitList(list)
     }
-
     inner class ExploreViewHolder( val binding: ExploreItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Photo){
-            Glide.with(context).load(item.src.tiny).into(binding.exploreImg)
+            Glide.with(context).load(item.src.medium).into(binding.exploreImg)
         }
 
     }

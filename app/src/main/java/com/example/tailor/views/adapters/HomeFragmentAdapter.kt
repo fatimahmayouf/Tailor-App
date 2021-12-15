@@ -5,12 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
+import com.example.tailor.R
 import com.example.tailor.databinding.HomeItemLayoutBinding
 import com.example.tailor.model.home.HomePhotoModel
+import com.example.tailor.views.OrderFragment
 
 private const val TAG = "HomeFragmentAdapter"
 
@@ -39,6 +42,14 @@ class HomeFragmentAdapter(val context: Context) :
         val item = differ.currentList[position]
         holder.bind(item)
         Log.d(TAG,item.toString())
+
+        holder.itemView.setOnClickListener {
+            val orderFragment = OrderFragment()
+            val activity = it.context as AppCompatActivity
+            activity.supportFragmentManager.beginTransaction()
+                .replace(R.id.home_layout,orderFragment)
+                .commit()
+        }
     }
 
     override fun getItemCount(): Int {
