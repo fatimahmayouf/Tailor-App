@@ -63,19 +63,14 @@ class ProfileFragment : Fragment() {
         binding.logoutTxt.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             requireActivity().supportFragmentManager.popBackStack()
-
         }
-
         binding.toggleButtonSize.setOnClickListener {
             isExpanded1 = !isExpanded1
             binding.expandLayout.visibility = if(isExpanded1)View.GONE else View.VISIBLE
-
         }
-
         binding.toggleButtonOrders.setOnClickListener {
             isExpanded2 = !isExpanded2
             binding.expandedLayoutOrders.visibility = if(isExpanded2)View.GONE else View.VISIBLE
-
         }
     }
 }

@@ -29,7 +29,6 @@ class HomeFragmentAdapter(val context: Context) :
         }
     }
     private  val differ = AsyncListDiffer(this, DIFF_CALLBACK)
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -55,15 +54,12 @@ class HomeFragmentAdapter(val context: Context) :
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
-
     fun submitList(list: List<HomePhotoModel>){
         differ.submitList(list)
     }
-
    inner class HomeFragmentViewHolder(val binding: HomeItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
        fun bind(item: HomePhotoModel){
            Glide.with(context).load(item.url1).into(binding.homeImageView)
        }
-
     }
 }
