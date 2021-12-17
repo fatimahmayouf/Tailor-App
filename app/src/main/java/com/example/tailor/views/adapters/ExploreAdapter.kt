@@ -66,7 +66,7 @@ class ExploreAdapter(val context: Context) :
     inner class ExploreViewHolder( val binding: ExploreItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Photo){
-            Glide.with(context).load(item.src.medium).into(binding.exploreImg)
+            Glide.with(context).load(item.src.large2x).into(binding.exploreImg)
         }
 
     }

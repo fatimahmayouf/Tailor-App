@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/order"
+    app:startDestination="@id/homeFragment3">
+    <fragment
+        android:id="@+id/addDesignFragment"
+        android:name="com.example.tailor.views.AddDesignFragment"
+        android:label="fragment_add_design"
+        tools:layout="@layout/fragment_add_design" >
+        <action
+            android:id="@+id/action_addDesignFragment_to_drawingBoardFragment"
+            app:destination="@id/drawingBoardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment3"
+        android:name="com.example.tailor.views.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment3_to_addDesignFragment"
+            app:destination="@id/addDesignFragment" />
+        <action
+            android:id="@+id/action_homeFragment3_to_loginFragment2"
+            app:destination="@id/loginFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/drawingBoardFragment"
+        android:name="com.example.tailor.views.DrawingBoardFragment"
+        android:label="fragment_drawing_board"
+        tools:layout="@layout/fragment_drawing_board" >
+        <action
+            android:id="@+id/action_drawingBoardFragment_to_orderFragment2"
+            app:destination="@id/orderFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderFragment2"
+        android:name="com.example.tailor.views.OrderFragment"
+        android:label="fragment_order"
+        tools:layout="@layout/fragment_order" />
+    <fragment
+        android:id="@+id/loginFragment2"
+        android:name="com.example.tailor.views.user.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment2_to_registerFragment2"
+            app:destination="@id/registerFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment2"
+        android:name="com.example.tailor.views.user.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+</navigation>

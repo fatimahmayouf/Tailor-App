@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Tailor</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="explore">Explore</string>
+    <string name="profile">Profile</string>
+    <string name="login">Login</string>
+    <string name="email">Email Address</string>
+    <string name="password">Password</string>
+    <string name="signUp">Sign up</string>
+    <string name="forgetPass">Forget Password?</string>
+    <string name="name">Full Name</string>
+    <string name="address">Delivery Address</string>
+    <string name="phone">Phone Number</string>
+    <string name="orders">My Orders</string>
+    <string name="measurement">Body Measurement</string>
+    <string name="userInformation">Personal Information</string>
+    <string name="logout">Logout</string>
+    <string name="price">Price</string>
+    <string name="notice">Notice</string>
+    <string name="order">+ Order</string>
+    <string name="upload">Upload Design Image</string>
+    <string name="draw">Draw Design</string>
+    <string name="threeD">Create 3D Design</string>
+</resources>
