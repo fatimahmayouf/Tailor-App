@@ -1,16 +1,27 @@
 package com.example.tailor.database
 
-import com.example.tailor.model.user.UserModel
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.database
+import android.annotation.SuppressLint
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 
 object TailorDataBase {
-     val database = FirebaseFirestore.getInstance()
-     val Usercollection = database.collection("User")
 
-    var orders = Usercollection.document("Orders")
-    var SizeMeasurement = Usercollection.document("SizeMeasurement")
+     @SuppressLint("StaticFieldLeak")
+
+     var databaseFireStore = FirebaseFirestore.getInstance()
+    var firebaseAuth = FirebaseAuth.getInstance()
+    var currentUse = firebaseAuth.currentUser!!.uid
+
+    val Usercollection = databaseFireStore.collection("User")// parent
+    var user = Usercollection.document(firebaseAuth.currentUser!!.uid)
+    val userInfo = user.collection("profile").document("personal information")
+    val userSize = user.collection("size").document("measurement")
+    val userOrders = user.collection("orders")
+
+
+
+
+
+
 
 }

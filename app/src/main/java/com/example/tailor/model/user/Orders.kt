@@ -4,7 +4,7 @@ data class Orders(
     var orderDate: String,
     var orderImg: String,
     var orderPrice: String,
-    var orderApproval: Boolean = false,
+    var orderApproval: Boolean? = null,
     var orderNotes: String
 
 )

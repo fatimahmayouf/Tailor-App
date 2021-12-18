@@ -39,13 +39,18 @@ class ProfileFragment : Fragment() {
 
         when (FirebaseAuth.getInstance().currentUser) {
             null -> {
-                var loginFragment = LoginFragment()
+                /*var loginFragment = LoginFragment()
                 requireActivity().supportFragmentManager.beginTransaction()
-                    .add(R.id.profile_userlayout,loginFragment).commit()
+                    .add(R.id.profile_userlayout,loginFragment).commit()*/
+                var registerFragment = RegisterFragment()
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .add(R.id.profile_userlayout,registerFragment).commit()
+
             }
             else ->{
-                //.addToBackStack("back to profile")
-                TailorDataBase.Usercollection.get().addOnSuccessListener {
+
+                // function
+             /*   TailorDataBase.Usercollection.get().addOnSuccessListener {
                     for( document in it){
                         Log.d(TAG,document.id)
                         Log.d(TAG,document.data.toString())
@@ -56,7 +61,7 @@ class ProfileFragment : Fragment() {
                     }
                 }.addOnFailureListener{
                     Log.d(TAG,it.toString())
-                }
+                }*/
             }
         }
 

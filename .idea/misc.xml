@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/drawable/arrow.xml" value="0.1648148148148148" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.14814814814814814" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/drawable/rectangle.xml" value="0.14814814814814814" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/drawable/toolbarrectangle.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/activity_main2.xml" value="0.14356884057971014" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/activity_splash.xml" value="0.22" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/explore_item_layout.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/fragment_add_design.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/fragment_drawing_board.xml" value="0.22" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/fragment_explore.xml" value="0.22" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/fragment_home.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/fragment_login.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/fragment_order.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/fragment_profile.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/fragment_register.xml" value="0.22" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/home_item_layout.xml" value="0.16259057971014493" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/lbill_item_layout.xml" value="0.1796875" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/paint_view.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/layout/replace.xml" value="0.14356884057971014" />
+        <entry key="..\:/Users/ftmmt/Desktop/GraduationProject/Tailor-App/app/src/main/res/menu/navigation_menu.xml" value="0.1" />
+        <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/explore_item_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/fragment_home.xml" value="0.16666666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
