@@ -13,21 +13,14 @@ import java.lang.Exception
 private const val TAG = "DatabaseRepository"
 class DatabaseRepository(context: Context):ITailorDatabase{
 
-    override fun registerUser(
+    override suspend fun registerUser(
         userModel: UserModel,
         userId: String
     ): Task<Void> {
         val a = TailorDataBase.Usercollection.document().collection("info").document(TailorDataBase.firebaseAuth.currentUser!!.uid).set(userModel)
         return a
     }
-    /*override suspend fun registerUser(userModel: UserModel, userId: String) {
-        val a =TailorDataBase.Usercollection.document(userId).set(userModel)
-                //في التطبيق
-        return a
-            //.addOnSuccessListener { Log.d(TAG, "registered successfully") }
-           // .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
-    }
-*/
+
     override suspend fun getUserProfile(userId: String){
          TailorDataBase.Usercollection.document(userId).get()
                  // في التطبيق
@@ -42,11 +35,8 @@ class DatabaseRepository(context: Context):ITailorDatabase{
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
-
             }
-
     }
-
     override suspend fun addOrder(orderModel: Orders) {
         TailorDataBase.userOrders.document().set(orderModel)
                 // في التطبيق
@@ -100,11 +90,6 @@ class DatabaseRepository(context: Context):ITailorDatabase{
             .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
 
     }
-
-
-
-
-
 
     companion object{
         private var instance: DatabaseRepository? = null

@@ -48,64 +48,73 @@ class RegisterFragment : Fragment() {
 
         binding.signUpRegBtn.setOnClickListener {
 
-            if(fullNameEditText.isNotEmpty()&&emailEditText.isNotEmpty()
-                && phoneNumberEditText.isNotEmpty()&&passEditText.isNotEmpty()){
 
-                if(validator.fullNameIsValid(fullNameEditText.toString())){
-                    if(validator.emailIsValid(emailEditText.toString())){
-                        if(validator.passwordISValid(passEditText.toString())){
 
-                            val userInfo = UserModel(fullNameEditText.toString(),emailEditText.toString(),
-                            passEditText.toString(),"",phoneNumberEditText.toString().toInt())
+                if(fullNameEditText.isNotEmpty()&&emailEditText.isNotEmpty()
+                    && phoneNumberEditText.isNotEmpty()&&passEditText.isNotEmpty()){
 
-                            //===========================================
-                            FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailEditText.toString(),passEditText.toString())
-                                .addOnCompleteListener{
-                                        task ->
-                                    if(task.isSuccessful){
-                                        //val firebaseUser: FirebaseUser = task.result!!.user!!
-                                        Toast.makeText(requireContext(), "User Registered Successfully", Toast.LENGTH_SHORT).show()
-                                        dataBaseService.registerUser(userInfo,TailorDataBase.firebaseAuth.currentUser!!.uid)
-                                            .addOnSuccessListener { Log.d(TAG, "registered successfully") }
-                                             .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+                    if(validator.fullNameIsValid(fullNameEditText.toString())){
+                        if(validator.emailIsValid(emailEditText.toString())){
+                            if(validator.passwordISValid(passEditText.toString())){
 
+                                val userInfo = UserModel(fullNameEditText.toString(),emailEditText.toString(),
+                                    passEditText.toString(),"",phoneNumberEditText.toString().toInt())
+
+                                //===========================================
+
+                                FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailEditText.toString(),passEditText.toString())
+                                    .addOnCompleteListener{
+                                            task ->
+                                        if(task.isSuccessful){
+                                            //val firebaseUser: FirebaseUser = task.result!!.user!!
+                                            Toast.makeText(requireContext(), "User Registered Successfully", Toast.LENGTH_SHORT).show()
+                                            GlobalScope.launch{
+                                                dataBaseService.registerUser(userInfo,TailorDataBase.firebaseAuth.currentUser!!.uid)
+                                                    .addOnSuccessListener { Log.d(TAG, "registered successfully") }
+                                                    .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+                                            }
+
+
+                                        }
+                                        else{
+                                            Toast.makeText(requireContext(), task.exception!!.message.toString(), Toast.LENGTH_SHORT).show()
+                                        }
                                     }
-                                    else{
-                                        Toast.makeText(requireContext(), task.exception!!.message.toString(), Toast.LENGTH_SHORT).show()
-                                    }
-                                }
-                            //===========================================
+                                //===========================================
 
+                            }else {
+
+                                Toast.makeText(
+                                    requireContext(),
+                                    "password is not valid",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         }else {
-
                             Toast.makeText(
                                 requireContext(),
-                                "password is not valid",
+                                "please, Make sure your email is correct",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
                     }else {
                         Toast.makeText(
                             requireContext(),
-                            "please, Make sure your email is correct",
+                            "please, Make sure your name is correct",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
                 }else {
                     Toast.makeText(
                         requireContext(),
-                        "please, Make sure your name is correct",
+                        "please all fields must be filled ",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-            }else {
-                Toast.makeText(
-                    requireContext(),
-                    "please all fields must be filled ",
-                    Toast.LENGTH_SHORT
-                ).show()
+
+
             }
-        }
+
         val loginFragment = LoginFragment()
         binding.loginRegBtn.setOnClickListener {
             requireActivity().supportFragmentManager
