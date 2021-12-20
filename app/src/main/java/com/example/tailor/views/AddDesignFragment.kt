@@ -12,7 +12,7 @@ import com.example.tailor.databinding.FragmentAddDesignBinding
 
 class AddDesignFragment : Fragment() {
 
-    lateinit var binding: FragmentAddDesignBinding
+    private lateinit var binding: FragmentAddDesignBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

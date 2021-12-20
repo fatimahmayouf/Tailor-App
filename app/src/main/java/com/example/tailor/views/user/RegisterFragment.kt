@@ -57,8 +57,7 @@ class RegisterFragment : Fragment() {
                         if(validator.emailIsValid(emailEditText.toString())){
                             if(validator.passwordISValid(passEditText.toString())){
 
-                                val userInfo = UserModel(fullNameEditText.toString(),emailEditText.toString(),
-                                    passEditText.toString(),"",phoneNumberEditText.toString().toInt())
+                                val userInfo = UserModel(fullNameEditText.toString(),emailEditText.toString(),"saudi",phoneNumberEditText.toString().toInt())
 
                                 //===========================================
 

@@ -14,9 +14,9 @@ object TailorDataBase {
 
     val Usercollection = databaseFireStore.collection("User")// parent
     var user = Usercollection.document(firebaseAuth.currentUser!!.uid)
-    val userInfo = user.collection("profile").document("personal information")
-    val userSize = user.collection("size").document("measurement")
-    val userOrders = user.collection("orders")
+   // val userInfo = user.collection("profile").document("personal information")
+    val userSize = user.collection("userId Size").document("measurement")
+    val userOrders = user.collection("UserIdOrders")
 
 
 

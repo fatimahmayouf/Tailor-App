@@ -23,4 +23,6 @@
     <string name="upload">Upload Design Image</string>
     <string name="draw">Draw Design</string>
     <string name="threeD">Create 3D Design</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 </resources>

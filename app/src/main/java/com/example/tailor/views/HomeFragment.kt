@@ -18,7 +18,7 @@ import com.example.tailor.views.adaptersimport.HomeFragmentAdapter
 
 private const val TAG = "HomeFragment"
 class HomeFragment : Fragment() {
- private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
     private lateinit var homeFragmentAdapter: HomeFragmentAdapter
     private val homeViewModel : HomeViewModel by activityViewModels()
 

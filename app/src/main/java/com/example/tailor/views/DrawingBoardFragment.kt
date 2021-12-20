@@ -13,7 +13,7 @@ import com.example.tailor.databinding.FragmentDrawingBoardBinding
 private const val TAG = "DrawingBoardFragment"
 class DrawingBoardFragment : Fragment() {
     
-    lateinit var binding: FragmentDrawingBoardBinding
+    private lateinit var binding: FragmentDrawingBoardBinding
     
     companion object{
         var path = Path()

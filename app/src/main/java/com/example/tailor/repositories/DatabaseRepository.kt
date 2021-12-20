@@ -8,7 +8,10 @@ import com.example.tailor.model.user.BodyMeasurement
 import com.example.tailor.model.user.Orders
 import com.example.tailor.model.user.UserModel
 import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.SetOptions
 import java.lang.Exception
+import java.util.*
 
 private const val TAG = "DatabaseRepository"
 class DatabaseRepository(context: Context):ITailorDatabase{
@@ -17,25 +20,14 @@ class DatabaseRepository(context: Context):ITailorDatabase{
         userModel: UserModel,
         userId: String
     ): Task<Void> {
-        val a = TailorDataBase.Usercollection.document().collection("info").document(TailorDataBase.firebaseAuth.currentUser!!.uid).set(userModel)
-        return a
+        val task = TailorDataBase.Usercollection
+            .document(TailorDataBase.firebaseAuth.currentUser!!.uid).set(userModel)
+        return task
     }
 
-    override suspend fun getUserProfile(userId: String){
-         TailorDataBase.Usercollection.document(userId).get()
-                 // في التطبيق
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    var requiredData = document.data
-                    Log.d(TAG, "DocumentSnapshot data: $requiredData")
-
-                } else {
-                    Log.d(TAG, "No such document")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
+    override suspend fun getUserProfile(userId: String):Task<DocumentSnapshot>{
+        val task = TailorDataBase.Usercollection.document(userId).get()
+            return task
     }
     override suspend fun addOrder(orderModel: Orders) {
         TailorDataBase.userOrders.document().set(orderModel)
@@ -72,23 +64,18 @@ class DatabaseRepository(context: Context):ITailorDatabase{
 
     override suspend fun updateBodyMeasurement(bodyMeasurement: Map<String, Double>) {
         TailorDataBase.userSize.update(bodyMeasurement)
-                //في التطبيق
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
-
     }
 
     override suspend fun updateUserProfile(
-        email: String,
         userModel: Map<String, Any>,
         userId: String
-    ) {
-        TailorDataBase.firebaseAuth.currentUser!!.updateEmail(email)
-        TailorDataBase.Usercollection.document(userId).update(userModel)
-                // في التطبيق
-            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
-            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
-
+    ): Task<Void>{
+        var a =TailorDataBase.Usercollection.document(userId).set(userModel, SetOptions.merge())
+            //.update(userModel.keys.toString(),userModel.values)
+        //.update(userModel)
+        return a
     }
 
     companion object{
