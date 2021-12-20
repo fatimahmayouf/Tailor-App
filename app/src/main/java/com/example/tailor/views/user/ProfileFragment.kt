@@ -12,7 +12,9 @@ import androidx.fragment.app.activityViewModels
 import com.example.tailor.R
 import com.example.tailor.databinding.FragmentProfileBinding
 import com.example.tailor.repositories.DatabaseRepository
+import com.example.tailor.util.setStatusBarColor
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.GlobalScope
 
 private const val TAG = "ProfileFragment"
 class ProfileFragment : Fragment() {
@@ -34,6 +36,8 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().setStatusBarColor(R.color.cardview_light_background)
+
         DatabaseRepository.get()
         viewModel.getProfileInfo()
 
@@ -77,7 +81,6 @@ class ProfileFragment : Fragment() {
 
 
     fun observers(){
-        //viewModel.getProfileInfo()
         viewModel.profileInfoLiveData.observe(viewLifecycleOwner,{
            binding.fullNameTextView.text = it.getValue("fullName").toString()
             binding.emailTextView.text = it.getValue("email").toString()

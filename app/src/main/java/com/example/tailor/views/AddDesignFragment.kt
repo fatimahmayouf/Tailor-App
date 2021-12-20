@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.tailor.R
 import com.example.tailor.databinding.FragmentAddDesignBinding
+import com.example.tailor.util.setStatusBarColor
 
 
 class AddDesignFragment : Fragment() {
@@ -26,6 +27,8 @@ class AddDesignFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val drawingBoardFragment = DrawingBoardFragment()
+
+        requireActivity().setStatusBarColor(R.color.cardview_light_background)
 
         binding.drawDesignBtn.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()

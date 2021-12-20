@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.tailor.R
 import com.example.tailor.databinding.FragmentLoginBinding
+import com.example.tailor.util.setStatusBarColor
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment() {
@@ -24,6 +25,9 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().setStatusBarColor(R.color.cardview_light_background)
+
         val registerFragment = RegisterFragment()
         binding.signUpLogBtn.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()

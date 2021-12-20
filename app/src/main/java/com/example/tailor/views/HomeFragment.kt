@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.tailor.R
 import com.example.tailor.databinding.FragmentHomeBinding
+import com.example.tailor.util.setStatusBarColor
 import com.example.tailor.views.adaptersimport.ExploreAdapter
 import com.example.tailor.views.adaptersimport.HomeFragmentAdapter
 
@@ -38,6 +39,7 @@ class HomeFragment : Fragment() {
         binding.recyclerView.adapter = homeFragmentAdapter
         observers()
         homeViewModel.getHomePhoto()
+        requireActivity().setStatusBarColor(R.color.cardview_light_background)
 
     }
 

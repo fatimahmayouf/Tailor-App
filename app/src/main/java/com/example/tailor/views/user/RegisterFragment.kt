@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlin.concurrent.fixedRateTimer
 
 private const val TAG = "RegisterFragment"
 class RegisterFragment : Fragment() {
@@ -69,7 +70,8 @@ class RegisterFragment : Fragment() {
                                             Toast.makeText(requireContext(), "User Registered Successfully", Toast.LENGTH_SHORT).show()
                                             GlobalScope.launch{
                                                 dataBaseService.registerUser(userInfo,TailorDataBase.firebaseAuth.currentUser!!.uid)
-                                                    .addOnSuccessListener { Log.d(TAG, "registered successfully") }
+                                                    .addOnSuccessListener { Log.d(TAG, "registered successfully")
+                                                    }
                                                     .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
                                             }
 

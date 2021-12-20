@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.example.tailor.R
 import com.example.tailor.databinding.FragmentExploreBinding
+import com.example.tailor.util.setStatusBarColor
 import com.example.tailor.views.adaptersimport.ExploreAdapter
 
 private const val TAG = "ExploreFragment"
@@ -33,8 +35,7 @@ class ExploreFragment : Fragment() {
         exploreFragmentAdapter = ExploreAdapter(requireActivity())
         binding.exploreRececlerView.adapter = exploreFragmentAdapter
         exploreViewModel.getPhoto()
-
-
+        requireActivity().setStatusBarColor(R.color.cardview_light_background)
     }
 
     private fun observers() {
