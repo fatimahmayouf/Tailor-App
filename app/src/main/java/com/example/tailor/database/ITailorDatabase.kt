@@ -21,7 +21,9 @@ interface ITailorDatabase {
 
     suspend fun deleteOrder(orderModel: Orders,docId: String)
 
-    suspend fun addBodyMeasurement(bodyMeasurement: BodyMeasurement)
+    suspend fun addBodyMeasurement(bodyMeasurement: BodyMeasurement):Task<Void>
+
+    suspend fun getBodyMeasurement(userId: String):Task<DocumentSnapshot>
 
     suspend fun updateBodyMeasurement(bodyMeasurement:Map<String,Double>)
 }

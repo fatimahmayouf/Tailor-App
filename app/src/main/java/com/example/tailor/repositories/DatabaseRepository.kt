@@ -31,14 +31,14 @@ class DatabaseRepository(context: Context):ITailorDatabase{
     }
     override suspend fun addOrder(orderModel: Orders) {
         TailorDataBase.userOrders.document().set(orderModel)
-                // في التطبيق
+
             .addOnSuccessListener { Log.d(TAG, "your order added successfully ") }
             .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
     }
 
     override suspend fun getOrders() {
         TailorDataBase.userOrders.get()
-            // هنا في التطبيق
+
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     Log.d(TAG, "${document.id} => ${document.data}")
@@ -49,12 +49,19 @@ class DatabaseRepository(context: Context):ITailorDatabase{
             }
     }
 
-    override suspend fun addBodyMeasurement(bodyMeasurement: BodyMeasurement) {
-        TailorDataBase.userSize.set(bodyMeasurement)
-            .addOnSuccessListener { Log.d(TAG, "bodyMeasurement has been added") }
-            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+    override suspend fun addBodyMeasurement(bodyMeasurement: BodyMeasurement): Task<Void>{
+        val task =TailorDataBase.Usercollection
+            .document(TailorDataBase.firebaseAuth.currentUser!!.uid)
+            .collection("Body Measurement").document().set(bodyMeasurement)
+        return task
     }
 
+    override suspend fun getBodyMeasurement(userId: String): Task<DocumentSnapshot> {
+        val task = TailorDataBase.Usercollection.document(userId).collection("Body Measurement")
+            .document().get()
+        return task
+
+    }
     override suspend fun deleteOrder(orderModel: Orders, docId: String) {
         TailorDataBase.userOrders.document(docId).delete()
                 //في التطبيق

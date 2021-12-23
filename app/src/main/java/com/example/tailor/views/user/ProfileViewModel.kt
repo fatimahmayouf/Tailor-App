@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tailor.database.TailorDataBase
 import com.example.tailor.model.user.BodyMeasurement
 import com.example.tailor.model.user.Orders
 import com.example.tailor.model.user.UserModel
@@ -21,7 +22,7 @@ class ProfileViewModel:ViewModel() {
     var profileInfoLiveData = MutableLiveData<Map<String,Any>>()
     val profileInfoLiveDataError = MutableLiveData<String>()
     
-    val profileMeasurementLiveData = MutableLiveData<BodyMeasurement>()
+    val profileMeasurementLiveData = MutableLiveData<Map<String,Any>>()
     val profileMeasurementLiveDataError = MutableLiveData<String>()
     
     val profileOrdersLiveData = MutableLiveData<Orders>()
@@ -58,11 +59,34 @@ class ProfileViewModel:ViewModel() {
     }
     
     fun getBodyMeasurement(){
-        try {
-            
-        }catch (e:Exception){
-            
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response = databaseService.getBodyMeasurement(FirebaseAuth.getInstance().currentUser!!.uid)
+
+                response.addOnSuccessListener { document ->
+                    if (document != null) {
+                        var requiredData = document.data
+                        Log.d(TAG, "DocumentSnapshot data: $requiredData")
+                        profileMeasurementLiveData.postValue(requiredData!!)
+                        Log.d(TAG,requiredData.toString())
+
+                    }else{
+                        Log.d(TAG, "No such document")
+                    }
+                }.addOnFailureListener {
+                        exception ->
+                    Log.d(TAG, "get failed with ", exception)
+                    profileMeasurementLiveDataError.postValue(exception.toString())
+                }
+
+            }catch (e:Exception){
+                profileMeasurementLiveDataError.postValue(e.message.toString())
+                Log.d(TAG,e.message.toString())
+
+            }
         }
+
         
     }
     

@@ -14,7 +14,6 @@ import com.example.tailor.views.DrawingBoardFragment.Companion.path
 
 class PaintView: View {
 
-
     // height and width of canvas associated with parent layout
     var params : ViewGroup.LayoutParams? = null
 
@@ -49,11 +48,9 @@ class PaintView: View {
     }
 
     // movement of user finger
-
     override fun onTouchEvent(event: MotionEvent): Boolean {
         var x = event.x
         var y = event.y
-
 
         when(event.action){
             MotionEvent.ACTION_DOWN ->{
@@ -81,7 +78,6 @@ class PaintView: View {
             paintBrush.setColor(colorList[i])
             canvas.drawPath(pathList[i], paintBrush)
             invalidate()// inform background thread
-
         }
     }
 }

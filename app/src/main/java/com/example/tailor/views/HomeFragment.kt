@@ -41,6 +41,8 @@ class HomeFragment : Fragment() {
         homeViewModel.getHomePhoto()
         requireActivity().setStatusBarColor(R.color.cardview_light_background)
 
+
+
     }
 
    private fun observers(){

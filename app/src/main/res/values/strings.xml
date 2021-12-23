@@ -25,4 +25,9 @@
     <string name="threeD">Create 3D Design</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="bustSize">Bust</string>
+    <string name="waistSize">Waist</string>
+    <string name="hipSize">Hip</string>
+    <string name="sleeveSize">Sleeve</string>
+    <string name="lengthSize">Length</string>
 </resources>

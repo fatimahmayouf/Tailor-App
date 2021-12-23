@@ -241,48 +241,161 @@
                 android:layout_marginTop="25dp"
                 android:orientation="horizontal"
                 android:padding="10dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
 
                 <LinearLayout
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp"
+                    android:paddingTop="10dp"
                     android:visibility="visible">
 
-                    <SeekBar
-                        android:id="@+id/seekBar"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        android:max="137"
-                        android:min="85"
-                        android:progress="102" />
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/bustSize" />
+
+                        <EditText
+                            android:id="@+id/bust_editText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
 
                     <SeekBar
-                        android:id="@+id/seekBar2"
+                        android:id="@+id/bustSeekBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp" />
+                        android:max="130"
+                        android:min="78"
+                        android:progress="90"
+                        android:stepSize="10" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/waistSize" />
+
+                        <EditText
+                            android:id="@+id/waist_editText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
 
                     <SeekBar
-                        android:id="@+id/seekBar3"
+                        android:id="@+id/WaistSeekBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp" />
+                        android:max="114"
+                        android:min="63"
+                        android:progress="74" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textVew3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/hipSize" />
+
+                        <EditText
+                            android:id="@+id/hip_editText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
 
                     <SeekBar
-                        android:id="@+id/seekBar4"
+                        android:id="@+id/hipSeekBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp" />
+                        android:max="128"
+                        android:min="88"
+                        android:progress="100" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/teiew3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/sleeveSize" />
+
+                        <EditText
+                            android:id="@+id/sleeve_editText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
 
                     <SeekBar
-                        android:id="@+id/seekBar5"
+                        android:id="@+id/sleeveSeekBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp" />
+                        android:max="66"
+                        android:min="60"
+                        android:progress="61" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/t3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/lengthSize" />
+
+                        <EditText
+                            android:id="@+id/length_EdittText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
+
+                    <SeekBar
+                        android:id="@+id/lengthSeekBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="185"
+                        android:min="140"
+                        android:progress="160" />
 
                 </LinearLayout>
 

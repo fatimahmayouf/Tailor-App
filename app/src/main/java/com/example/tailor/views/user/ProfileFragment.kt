@@ -1,12 +1,13 @@
 package com.example.tailor.views.user
 
-
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.example.tailor.R
@@ -14,15 +15,15 @@ import com.example.tailor.databinding.FragmentProfileBinding
 import com.example.tailor.repositories.DatabaseRepository
 import com.example.tailor.util.setStatusBarColor
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.GlobalScope
+
 
 private const val TAG = "ProfileFragment"
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
     private val viewModel: ProfileViewModel by activityViewModels()
-    var isExpanded1 = true
-    var isExpanded2 = true
+    var isExpandedSize = true
+    var isExpandedOrders = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,9 +42,7 @@ class ProfileFragment : Fragment() {
         DatabaseRepository.get()
         viewModel.getProfileInfo()
 
-        binding.expandLayout.visibility = if(isExpanded1)View.GONE else View.VISIBLE
-        binding.expandedLayoutOrders.visibility = if(isExpanded1)View.GONE else View.VISIBLE
-
+        // ===========================check Authentication=============================
 
         when (FirebaseAuth.getInstance().currentUser) {
             null -> {
@@ -56,31 +55,113 @@ class ProfileFragment : Fragment() {
             }
             else ->{
                 viewModel.getProfileInfo()
-                observers()
+                profileObservers()
 
             }
         }
+        //===========================Logout===================================
+
         binding.logoutTxt.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             requireActivity().supportFragmentManager.popBackStack()
         }
+        //=========================minimize and maximize layout================
+        binding.expandLayout.visibility = if(isExpandedSize)View.GONE else View.VISIBLE
+        binding.expandedLayoutOrders.visibility = if(isExpandedOrders)View.GONE else View.VISIBLE
+
         binding.toggleButtonSize.setOnClickListener {
-            isExpanded1 = !isExpanded1
-            binding.expandLayout.visibility = if(isExpanded1)View.GONE else View.VISIBLE
+            isExpandedSize = !isExpandedSize
+            binding.expandLayout.visibility = if(isExpandedSize)View.GONE else View.VISIBLE
         }
         binding.toggleButtonOrders.setOnClickListener {
-            isExpanded2 = !isExpanded2
-            binding.expandedLayoutOrders.visibility = if(isExpanded2)View.GONE else View.VISIBLE
+            isExpandedOrders = !isExpandedOrders
+            binding.expandedLayoutOrders.visibility = if(isExpandedOrders)View.GONE else View.VISIBLE
         }
 
+        //======================Update user personal information==================
         binding.editImgBtn.setOnClickListener {
             val updateUserInfoFragment = UpdateUserInfo()
             updateUserInfoFragment.show(requireActivity().supportFragmentManager,"edit profile")
         }
+
+        //======================Seekbars for body measurement======================
+        //Bust
+        binding.bustSeekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                binding.bustEditText.setText(p1.toString() + " cm")
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+
+            }
+
+        })
+        //Waist
+        binding.WaistSeekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                binding.waistEditText.setText(p1.toString() + " cm")
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+
+            }
+
+        })
+
+        //Hip
+        binding.hipSeekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+            @SuppressLint("SetTextI18n")
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                binding.hipEditText.setText(p1.toString() + " cm")
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+
+            }
+
+        })
+        //sleeve
+        binding.sleeveSeekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                binding.sleeveEditText.setText(p1.toString() + " cm")
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+
+            }
+
+        })
+
+        //Length
+        binding.lengthSeekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                binding.lengthEdittText.setText(p1.toString() + " cm")
+            }
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+
+            }
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+
+            }
+        })
     }
-
-
-    fun observers(){
+    fun profileObservers(){
         viewModel.profileInfoLiveData.observe(viewLifecycleOwner,{
            binding.fullNameTextView.text = it.getValue("fullName").toString()
             binding.emailTextView.text = it.getValue("email").toString()
@@ -93,6 +174,13 @@ class ProfileFragment : Fragment() {
         viewModel.profileInfoLiveDataError.observe(viewLifecycleOwner,{
             Log.d(TAG, it)
             Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
+        })
+    }
+
+    fun bodySizeObservers(){
+        viewModel.profileMeasurementLiveData.observe(viewLifecycleOwner,{
+
+            Log.d(TAG,viewModel.profileMeasurementLiveData.toString())
         })
     }
 }
