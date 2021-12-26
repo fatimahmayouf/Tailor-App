@@ -18,6 +18,9 @@ class ExploreViewModel: ViewModel() {
     val explorePhotoLiveData = MutableLiveData<ExplorePhotoModel>()
     val errorLiveData = MutableLiveData<String>()
 
+    var exploreItemPrice: Double= 0.00
+    var exploreItemImg: String = " "
+
     fun getPhoto(){
         try {
             viewModelScope.launch(Dispatchers.IO) {

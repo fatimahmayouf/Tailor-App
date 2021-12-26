@@ -6,21 +6,19 @@ import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tailor.R
 import com.example.tailor.model.explore.Photo
-import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.contentValuesOf
-import androidx.fragment.app.FragmentManager
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
 import com.example.tailor.databinding.ExploreItemLayoutBinding
-import com.example.tailor.views.OrderFragment
+import com.example.tailor.views.ExploreViewModel
 
 private const val TAG = "ExploreAdapter"
-class ExploreAdapter(val context: Context) :
+class ExploreAdapter(val context: Context, val viewModel: ExploreViewModel) :
     RecyclerView.Adapter<ExploreAdapter.ExploreViewHolder>() {
 
+    //val sharedView = SharedViewModel()
 
     val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Photo>() {
         override fun areItemsTheSame(oldItem: Photo, newItem: Photo): Boolean {
@@ -49,11 +47,11 @@ class ExploreAdapter(val context: Context) :
         Log.d(TAG,item.toString())
 
         holder.itemView.setOnClickListener {
-            val orderFragment = OrderFragment()
-            val activity = it.context as AppCompatActivity
-            activity.supportFragmentManager.beginTransaction()
-                .replace(R.id.explore_layout,orderFragment)
-                .commit()
+
+            viewModel.exploreItemImg = item.src.medium
+            viewModel.exploreItemPrice = 370.00
+
+            it.findNavController().navigate(R.id.action_exploreFragment_to_orderFragment)
         }
     }
 

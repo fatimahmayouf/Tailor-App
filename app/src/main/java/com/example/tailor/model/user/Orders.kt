@@ -1,10 +1,10 @@
 package com.example.tailor.model.user
 
 data class Orders(
-    var orderDate: String,
-    var orderImg: String,
-    var orderPrice: String,
-    var orderApproval: Boolean? = null,
-    var orderNotes: String
+    var orderDate: String? = null,
+    var orderImg: String? = null,
+    var orderPrice: Double? = null,
+    var orderNotes: String? = null,
+    var orderApproval: Boolean? = null
 
 )

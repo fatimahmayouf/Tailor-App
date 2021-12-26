@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeFragmentAdapter = HomeFragmentAdapter(requireActivity())
+        homeFragmentAdapter = HomeFragmentAdapter(requireActivity(),homeViewModel)
         binding.recyclerView.adapter = homeFragmentAdapter
         observers()
         homeViewModel.getHomePhoto()

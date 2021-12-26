@@ -5,20 +5,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
 import com.example.tailor.R
 import com.example.tailor.databinding.HomeItemLayoutBinding
 import com.example.tailor.model.home.HomePhotoModel
-import com.example.tailor.views.OrderFragment
+import com.example.tailor.views.HomeViewModel
 
 private const val TAG = "HomeFragmentAdapter"
 
-class HomeFragmentAdapter(val context: Context) :
+class HomeFragmentAdapter(val context: Context, val viewModel: HomeViewModel) :
     RecyclerView.Adapter<HomeFragmentAdapter.HomeFragmentViewHolder>() {
+
+    //val viewModel = SharedViewModel()
 
     val DIFF_CALLBACK = object : DiffUtil.ItemCallback<HomePhotoModel>() {
         override fun areItemsTheSame(oldItem: HomePhotoModel, newItem: HomePhotoModel): Boolean {
@@ -43,11 +44,19 @@ class HomeFragmentAdapter(val context: Context) :
         Log.d(TAG,item.toString())
 
         holder.itemView.setOnClickListener {
-            val orderFragment = OrderFragment()
+            viewModel.homeItemImg = item.url1
+            viewModel.homeItemPrice = item.price.toDouble()
+
+            it.findNavController().navigate(R.id.action_homeFragment_to_homeOrderFragment)
+
+            //viewModel.exploreItem = item.id
+           // it.findNavController().navigate(R.id.action_homeFragment_to_orderFragment)
+
+            /*val orderFragment = OrderFragment()
             val activity = it.context as AppCompatActivity
             activity.supportFragmentManager.beginTransaction()
                 .replace(R.id.home_layout,orderFragment)
-                .commit()
+                .commit()*/
         }
     }
 

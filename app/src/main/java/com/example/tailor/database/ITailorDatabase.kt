@@ -15,7 +15,7 @@ interface ITailorDatabase {
 
     suspend fun updateUserProfile(userModel:Map<String,Any>,userId: String):Task<Void>
 
-    suspend fun addOrder(orderModel: Orders)
+    suspend fun addOrder(orderModel: Orders): Task<Void>
 
     suspend fun getOrders()
 

@@ -29,11 +29,11 @@ class DatabaseRepository(context: Context):ITailorDatabase{
         val task = TailorDataBase.Usercollection.document(userId).get()
             return task
     }
-    override suspend fun addOrder(orderModel: Orders) {
-        TailorDataBase.userOrders.document().set(orderModel)
-
-            .addOnSuccessListener { Log.d(TAG, "your order added successfully ") }
-            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+    override suspend fun addOrder(orderModel: Orders):Task<Void> {
+        val task =TailorDataBase.Usercollection
+            .document(TailorDataBase.firebaseAuth.currentUser!!.uid).collection("Orders")
+            .document().set(orderModel)
+                return task
     }
 
     override suspend fun getOrders() {
@@ -79,10 +79,9 @@ class DatabaseRepository(context: Context):ITailorDatabase{
         userModel: Map<String, Any>,
         userId: String
     ): Task<Void>{
-        var a =TailorDataBase.Usercollection.document(userId).set(userModel, SetOptions.merge())
-            //.update(userModel.keys.toString(),userModel.values)
-        //.update(userModel)
-        return a
+        var task =TailorDataBase.Usercollection.document(userId).set(userModel, SetOptions.merge())
+
+        return task
     }
 
     companion object{

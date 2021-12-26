@@ -17,6 +17,8 @@ class HomeViewModel: ViewModel() {
     val homePhotoLiveData = MutableLiveData<List<HomePhotoModel>>()
     val errorHomeLiveData = MutableLiveData<String>()
 
+    var homeItemPrice: Double= 0.00
+    var homeItemImg: String = " "
 
     fun getHomePhoto(){
         try {

@@ -40,7 +40,11 @@ class UpdateUserInfo : DialogFragment() {
         getObservers()
 
         binding.saveChangeBtn.setOnClickListener {
-            if(binding.fullNameEditText.text.isNotEmpty() && binding.emailEditText.text.isNotEmpty() && binding.locationEditText.text.isNotEmpty() && binding.phoneEditText.text.isNotEmpty()){
+            if(binding.fullNameEditText.text.isNotEmpty()
+                && binding.emailEditText.text.isNotEmpty()
+                && binding.locationEditText.text.isNotEmpty()
+                && binding.phoneEditText.text.isNotEmpty()){
+
                 map = hashMapOf("fullName" to binding.fullNameEditText.text.toString(),
                     "email" to binding.emailEditText.text.toString(),
                     "location" to binding.locationEditText.text.toString(),
@@ -48,6 +52,12 @@ class UpdateUserInfo : DialogFragment() {
 
                 updateViewModel.updateUserInfo(map,FirebaseAuth.getInstance().currentUser!!.uid)
                 updateObservers()
+                //update email in the Authentication
+                FirebaseAuth.getInstance().currentUser!!.updateEmail(binding.emailEditText.text.toString()).addOnFailureListener {
+                    Log.d(TAG,"Auth updated")
+                }.addOnFailureListener {
+                    Log.d(TAG,it.message.toString())
+                }
                 dismiss()
 
 

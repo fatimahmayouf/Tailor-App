@@ -32,7 +32,7 @@ class ExploreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         observers()
-        exploreFragmentAdapter = ExploreAdapter(requireActivity())
+        exploreFragmentAdapter = ExploreAdapter(requireActivity(),exploreViewModel)
         binding.exploreRececlerView.adapter = exploreFragmentAdapter
         exploreViewModel.getPhoto()
         requireActivity().setStatusBarColor(R.color.cardview_light_background)
