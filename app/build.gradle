@@ -74,6 +74,9 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.google.code.gson:gson:2.8.8'
 
+    implementation 'com.github.yukuku:ambilwarna:2.0.1'
+
+    implementation 'com.zhihu.android:matisse:0.5.3-beta3'
 
 
 

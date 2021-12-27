@@ -163,19 +163,14 @@ class RegisterFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-
-
         }
-
 
         val loginFragment = LoginFragment()
         binding.loginRegBtn.setOnClickListener {
+           // fragmentManager?.popBackStack()
             requireActivity().supportFragmentManager
                 .beginTransaction().replace(R.id.registerFragment_layout, loginFragment)
                 .commit()
         }
-
     }
-
-
 }

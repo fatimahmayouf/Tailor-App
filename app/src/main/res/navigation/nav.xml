@@ -36,12 +36,12 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/orderFragment"
-        android:name="com.example.tailor.views.OrderFragment"
+        android:name="com.example.tailor.views.orders.OrderFragment"
         android:label="fragment_order"
         tools:layout="@layout/fragment_order" />
     <fragment
         android:id="@+id/homeOrderFragment"
-        android:name="com.example.tailor.views.HomeOrderFragment"
+        android:name="com.example.tailor.views.orders.HomeOrderFragment"
         android:label="fragment_home_order"
         tools:layout="@layout/fragment_home_order" />
 </navigation>

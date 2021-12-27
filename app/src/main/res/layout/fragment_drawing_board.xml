@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_anchorGravity="clip_vertical"
-    tools:context=".views.DrawingBoardFragment">
+    tools:context=".views.orders.DrawingBoardFragment">
 
 
     <LinearLayout

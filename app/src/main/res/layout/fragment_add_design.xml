@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/white"
-    tools:context=".views.AddDesignFragment">
+    tools:context=".views.orders.AddDesignFragment">
 
     <ImageView
         android:id="@+id/imageView7"
@@ -64,4 +64,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/draw_Design_btn"
         app:layout_constraintVertical_bias="0.079" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

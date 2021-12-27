@@ -14,6 +14,7 @@ import androidx.navigation.ui.NavigationUI
 import com.example.tailor.R
 import com.example.tailor.databinding.ActivityMainBinding
 import com.example.tailor.util.getCityName
+import com.example.tailor.views.orders.AddDesignFragment
 import com.google.android.gms.location.LocationServices
 import java.lang.Exception
 
@@ -63,6 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.bottomNavView,navController)
+
         binding.fab.setOnClickListener {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.main_layout, AddDesignFragment())

@@ -6,12 +6,24 @@
     app:startDestination="@id/addDesignFragment">
     <fragment
         android:id="@+id/addDesignFragment"
-        android:name="com.example.tailor.views.AddDesignFragment"
+        android:name="com.example.tailor.views.orders.AddDesignFragment"
         android:label="fragment_add_design"
-        tools:layout="@layout/fragment_add_design" />
+        tools:layout="@layout/fragment_add_design" >
+        <action
+            android:id="@+id/action_addDesignFragment_to_drawingBoardFragment"
+            app:destination="@id/drawingBoardFragment" />
+        <action
+            android:id="@+id/action_addDesignFragment_to_orderCameraFragment"
+            app:destination="@id/orderCameraFragment" />
+    </fragment>
     <fragment
         android:id="@+id/drawingBoardFragment"
-        android:name="com.example.tailor.views.DrawingBoardFragment"
+        android:name="com.example.tailor.views.orders.DrawingBoardFragment"
         android:label="fragment_drawing_board"
         tools:layout="@layout/fragment_drawing_board" />
+    <fragment
+        android:id="@+id/orderCameraFragment"
+        android:name="com.example.tailor.views.orders.OrderCameraFragment"
+        android:label="fragment_order_camera"
+        tools:layout="@layout/fragment_order_camera" />
 </navigation>

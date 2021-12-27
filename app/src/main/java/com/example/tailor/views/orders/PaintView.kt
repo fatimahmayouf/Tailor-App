@@ -1,4 +1,4 @@
-package com.example.tailor.views
+package com.example.tailor.views.orders
 
 import android.content.Context
 import android.graphics.Canvas
@@ -9,8 +9,8 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import com.example.tailor.views.DrawingBoardFragment.Companion.paintBrush
-import com.example.tailor.views.DrawingBoardFragment.Companion.path
+import com.example.tailor.views.orders.DrawingBoardFragment.Companion.paintBrush
+import com.example.tailor.views.orders.DrawingBoardFragment.Companion.path
 
 class PaintView: View {
 

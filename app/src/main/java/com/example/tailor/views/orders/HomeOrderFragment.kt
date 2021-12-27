@@ -1,4 +1,4 @@
-package com.example.tailor.views
+package com.example.tailor.views.orders
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,9 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
-import com.example.tailor.R
 import com.example.tailor.databinding.FragmentHomeOrderBinding
-import com.example.tailor.databinding.FragmentOrderBinding
+import com.example.tailor.views.HomeViewModel
 
 class HomeOrderFragment : Fragment() {
 

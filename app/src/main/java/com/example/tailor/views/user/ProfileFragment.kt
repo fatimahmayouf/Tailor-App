@@ -46,12 +46,13 @@ class ProfileFragment : Fragment() {
 
         when (FirebaseAuth.getInstance().currentUser) {
             null -> {
-               /* var loginFragment = LoginFragment()
+                var loginFragment = LoginFragment()
                 requireActivity().supportFragmentManager.beginTransaction()
-                    .add(R.id.profile_userlayout,loginFragment).commit()*/
-                var registerFragment = RegisterFragment()
+                    .add(R.id.profile_userlayout,loginFragment).commit()
+
+               /* var registerFragment = RegisterFragment()
                 requireActivity().supportFragmentManager.beginTransaction()
-                    .add(R.id.profile_userlayout,registerFragment).commit()
+                    .add(R.id.profile_userlayout,registerFragment).commit()*/
             }
             else ->{
                 viewModel.getProfileInfo()
@@ -173,7 +174,7 @@ class ProfileFragment : Fragment() {
 
         viewModel.profileInfoLiveDataError.observe(viewLifecycleOwner,{
             Log.d(TAG, it)
-            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
+            //Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
         })
     }
 

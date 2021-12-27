@@ -1,4 +1,4 @@
-package com.example.tailor.views
+package com.example.tailor.views.orders
 
 import android.graphics.Paint
 import android.graphics.Path
@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.tailor.R
 import com.example.tailor.databinding.FragmentDrawingBoardBinding
+import yuku.ambilwarna.AmbilWarnaDialog
 
 private const val TAG = "DrawingBoardFragment"
 class DrawingBoardFragment : Fragment() {
@@ -30,6 +30,7 @@ class DrawingBoardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.brushImgBtn.setOnClickListener { 
             
         }
@@ -37,8 +38,24 @@ class DrawingBoardFragment : Fragment() {
             
         }
         binding.colorsImgBtn.setOnClickListener {  
-            
+            openColorePicker()
         }
         
+    }
+
+    fun openColorePicker(){
+        val amb = AmbilWarnaDialog(requireContext(), PaintView.currentBrush,object : AmbilWarnaDialog.OnAmbilWarnaListener{
+            override fun onCancel(dialog: AmbilWarnaDialog?) {
+
+            }
+
+            override fun onOk(dialog: AmbilWarnaDialog?, color: Int) {
+
+                PaintView.currentBrush = color
+
+            }
+
+        })
+        amb.show()
     }
 }

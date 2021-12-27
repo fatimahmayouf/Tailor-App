@@ -10,6 +10,7 @@ import com.example.tailor.R
 import com.example.tailor.databinding.FragmentLoginBinding
 import com.example.tailor.util.setStatusBarColor
 import com.google.firebase.auth.FirebaseAuth
+import kotlin.concurrent.fixedRateTimer
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
@@ -30,9 +31,14 @@ class LoginFragment : Fragment() {
 
         val registerFragment = RegisterFragment()
         binding.signUpLogBtn.setOnClickListener {
+            //binding.loginLayout.visibility=View.INVISIBLE
+
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.login_layout,registerFragment)
                 .commit()
+
+            //fragmentManager?.popBackStack()
+
 
         }
         val email = binding.emailLogEditText.text

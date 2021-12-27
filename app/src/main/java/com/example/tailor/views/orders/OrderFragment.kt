@@ -1,4 +1,4 @@
-package com.example.tailor.views
+package com.example.tailor.views.orders
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -14,6 +14,7 @@ import com.example.tailor.R
 import com.example.tailor.databinding.FragmentOrderBinding
 import com.example.tailor.model.user.Orders
 import com.example.tailor.util.setStatusBarColor
+import com.example.tailor.views.ExploreViewModel
 import com.example.tailor.views.user.OrderViewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -22,7 +23,7 @@ private const val TAG = "OrderFragment"
 class OrderFragment : Fragment() {
     lateinit var binding: FragmentOrderBinding
 
-    val viewModel :ExploreViewModel by activityViewModels()
+    val viewModel : ExploreViewModel by activityViewModels()
     val orderViewModel: OrderViewModel by activityViewModels()
 
     override fun onCreateView(
