@@ -11,7 +11,6 @@ import com.example.tailor.databinding.FragmentAddDesignBinding
 
 import com.example.tailor.util.setStatusBarColor
 
-
 class AddDesignFragment : Fragment() {
 
     private lateinit var binding: FragmentAddDesignBinding
@@ -29,20 +28,22 @@ class AddDesignFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val drawingBoardFragment = DrawingBoardFragment()
         val orderCameraFragment = OrderCameraFragment()
+        var addDesignFragment = AddDesignFragment()
 
         requireActivity().setStatusBarColor(R.color.cardview_light_background)
 
         binding.uploadDesignBtn.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
+            it.findNavController().navigate(R.id.action_addDesignFragment_to_orderCameraFragment)
+            /*requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.addDesign_layout,orderCameraFragment)
-                .commit()
+                .commit()*/
         }
 
         binding.drawDesignBtn.setOnClickListener {
-           //it.findNavController().navigate(R.id.action_addDesignFragment_to_drawingBoardFragment)
-            requireActivity().supportFragmentManager.beginTransaction()
+           it.findNavController().navigate(R.id.action_addDesignFragment_to_drawingBoardFragment)
+           /* requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.addDesign_layout,drawingBoardFragment)
-                .commit()
+                .commit()*/
         }
     }
 }

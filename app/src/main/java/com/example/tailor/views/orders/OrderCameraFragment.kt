@@ -28,7 +28,7 @@ class OrderCameraFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        //val addDesignFragment = AddDesignFragment()
         pickImage()
     }
 
@@ -41,6 +41,10 @@ class OrderCameraFragment : Fragment() {
 
             //add image in view
             Glide.with(requireActivity()).load(imgFile).into(binding.cameraOrderImg)
+        }
+
+        binding.OrderCameraButton.setOnClickListener {
+            //observers
         }
     }
 

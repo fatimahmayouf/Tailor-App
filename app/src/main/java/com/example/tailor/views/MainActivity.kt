@@ -2,6 +2,7 @@ package com.example.tailor.views
 
 
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,7 @@ import androidx.navigation.ui.NavigationUI
 import com.example.tailor.R
 import com.example.tailor.databinding.ActivityMainBinding
 import com.example.tailor.util.getCityName
+import com.example.tailor.views.orders.AddActivity
 import com.example.tailor.views.orders.AddDesignFragment
 import com.google.android.gms.location.LocationServices
 import java.lang.Exception
@@ -66,9 +68,11 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.bottomNavView,navController)
 
         binding.fab.setOnClickListener {
-            supportFragmentManager.beginTransaction()
+            val intent = Intent(this, AddActivity::class.java)
+            startActivity(intent)
+            /*supportFragmentManager.beginTransaction()
                 .replace(R.id.main_layout, AddDesignFragment())
-                .commit()
+                .commit()*/
         }
     }
 

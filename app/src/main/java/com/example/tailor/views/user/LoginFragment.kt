@@ -50,8 +50,10 @@ class LoginFragment : Fragment() {
                     .addOnCompleteListener {
                             task -> if (task.isSuccessful){
                         Toast.makeText(requireContext(), "Logged in successfully", Toast.LENGTH_SHORT).show()
-                       // requireActivity().supportFragmentManager.popBackStack()
-                        binding.loginLayout.visibility=View.GONE
+                        requireActivity().supportFragmentManager.popBackStack()
+                        //binding.loginLayout.visibility=View.GONE
+                       /* requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(R.id.login_layout,ProfileFragment()).commit()*/
                     }else{
                         Toast.makeText(requireContext(),task.exception!!.message.toString() , Toast.LENGTH_SHORT).show()
                     }

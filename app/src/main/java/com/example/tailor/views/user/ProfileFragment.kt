@@ -171,6 +171,7 @@ class ProfileFragment : Fragment() {
             Log.d(TAG,viewModel.profileInfoLiveData.toString())
 
         })
+        viewModel.getProfileInfo()
 
         viewModel.profileInfoLiveDataError.observe(viewLifecycleOwner,{
             Log.d(TAG, it)
