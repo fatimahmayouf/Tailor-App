@@ -9,6 +9,7 @@ import com.example.tailor.model.user.Orders
 import com.example.tailor.model.user.UserModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.SetOptions
 import java.lang.Exception
 import java.util.*
@@ -36,17 +37,22 @@ class DatabaseRepository(context: Context):ITailorDatabase{
                 return task
     }
 
-    override suspend fun getOrders() {
-        TailorDataBase.userOrders.get()
+    override suspend fun getOrders() :Task<QuerySnapshot>{
+        val task =TailorDataBase.Usercollection
+            .document(TailorDataBase.firebaseAuth.currentUser!!.uid).collection("Orders")
+            //.document()
+            .get()
 
-            .addOnSuccessListener { documents ->
+        return  task
+
+        /*    .addOnSuccessListener { documents ->
                 for (document in documents) {
                     Log.d(TAG, "${document.id} => ${document.data}")
                 }
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents: ", exception)
-            }
+            }*/
     }
 
     override suspend fun addBodyMeasurement(bodyMeasurement: BodyMeasurement): Task<Void>{
@@ -62,11 +68,13 @@ class DatabaseRepository(context: Context):ITailorDatabase{
         return task
 
     }
-    override suspend fun deleteOrder(orderModel: Orders, docId: String) {
-        TailorDataBase.userOrders.document(docId).delete()
-                //في التطبيق
+    override suspend fun deleteOrder(docId: String):Task<Void> {
+       val task = TailorDataBase.userOrders.document(docId).delete()
+
+        return task
+             /*   //في التطبيق
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
-            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }*/
     }
 
     override suspend fun updateBodyMeasurement(bodyMeasurement: Map<String, Double>) {

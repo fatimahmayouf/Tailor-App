@@ -30,4 +30,5 @@
     <string name="hipSize">Hip</string>
     <string name="sleeveSize">Sleeve</string>
     <string name="lengthSize">Length</string>
+    <string name="Cancel_order">Cancel my order</string>
 </resources>

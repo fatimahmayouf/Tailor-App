@@ -10,12 +10,15 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.RecyclerView
 import com.example.tailor.R
 import com.example.tailor.databinding.FragmentProfileBinding
+import com.example.tailor.model.user.Orders
 import com.example.tailor.repositories.DatabaseRepository
 import com.example.tailor.util.setStatusBarColor
+import com.example.tailor.views.adapters.OrderListAdapter
 import com.google.firebase.auth.FirebaseAuth
-
+import com.google.firestore.v1.StructuredQuery
 
 private const val TAG = "ProfileFragment"
 class ProfileFragment : Fragment() {
@@ -24,6 +27,9 @@ class ProfileFragment : Fragment() {
     private val viewModel: ProfileViewModel by activityViewModels()
     var isExpandedSize = true
     var isExpandedOrders = true
+
+    val orderList = listOf<Orders>()
+    lateinit var orderAdapter: OrderListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +46,11 @@ class ProfileFragment : Fragment() {
         requireActivity().setStatusBarColor(R.color.cardview_light_background)
 
         DatabaseRepository.get()
-        viewModel.getProfileInfo()
+
+        /*recyclerView = binding.orderRecyclerView
+        recyclerView.adapter = orderAdapter*/
+        //viewModel.getProfileInfo()
+
 
         // ===========================check Authentication=============================
 
@@ -49,7 +59,6 @@ class ProfileFragment : Fragment() {
                 var loginFragment = LoginFragment()
                 requireActivity().supportFragmentManager.beginTransaction()
                     .add(R.id.profile_userlayout,loginFragment).commit()
-
                /* var registerFragment = RegisterFragment()
                 requireActivity().supportFragmentManager.beginTransaction()
                     .add(R.id.profile_userlayout,registerFragment).commit()*/
@@ -57,15 +66,24 @@ class ProfileFragment : Fragment() {
             else ->{
                 viewModel.getProfileInfo()
                 profileObservers()
+                //viewModel.getBodyMeasurement()
+               // bodySizeObservers()
 
+                //=========================orders list=================================
+                orderAdapter = OrderListAdapter(requireContext(),viewModel)
+                binding.orderRecyclerView.adapter = orderAdapter
+                viewModel.getUserOrders()
+                ordersObservers()
             }
         }
+
         //===========================Logout===================================
 
         binding.logoutTxt.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             requireActivity().supportFragmentManager.popBackStack()
         }
+
         //=========================minimize and maximize layout================
         binding.expandLayout.visibility = if(isExpandedSize)View.GONE else View.VISIBLE
         binding.expandedLayoutOrders.visibility = if(isExpandedOrders)View.GONE else View.VISIBLE
@@ -88,6 +106,7 @@ class ProfileFragment : Fragment() {
         //======================Seekbars for body measurement======================
         //Bust
         binding.bustSeekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+            @SuppressLint("SetTextI18n")
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 binding.bustEditText.setText(p1.toString() + " cm")
             }
@@ -99,10 +118,10 @@ class ProfileFragment : Fragment() {
             override fun onStopTrackingTouch(p0: SeekBar?) {
 
             }
-
         })
         //Waist
         binding.WaistSeekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+            @SuppressLint("SetTextI18n")
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 binding.waistEditText.setText(p1.toString() + " cm")
             }
@@ -114,7 +133,6 @@ class ProfileFragment : Fragment() {
             override fun onStopTrackingTouch(p0: SeekBar?) {
 
             }
-
         })
 
         //Hip
@@ -131,10 +149,10 @@ class ProfileFragment : Fragment() {
             override fun onStopTrackingTouch(p0: SeekBar?) {
 
             }
-
         })
         //sleeve
         binding.sleeveSeekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+            @SuppressLint("SetTextI18n")
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 binding.sleeveEditText.setText(p1.toString() + " cm")
             }
@@ -146,7 +164,6 @@ class ProfileFragment : Fragment() {
             override fun onStopTrackingTouch(p0: SeekBar?) {
 
             }
-
         })
 
         //Length
@@ -161,6 +178,7 @@ class ProfileFragment : Fragment() {
 
             }
         })
+
     }
     fun profileObservers(){
         viewModel.profileInfoLiveData.observe(viewLifecycleOwner,{
@@ -175,7 +193,6 @@ class ProfileFragment : Fragment() {
 
         viewModel.profileInfoLiveDataError.observe(viewLifecycleOwner,{
             Log.d(TAG, it)
-            //Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
         })
     }
 
@@ -183,6 +200,22 @@ class ProfileFragment : Fragment() {
         viewModel.profileMeasurementLiveData.observe(viewLifecycleOwner,{
 
             Log.d(TAG,viewModel.profileMeasurementLiveData.toString())
+        })
+        viewModel.profileMeasurementLiveDataError.observe(viewLifecycleOwner,{
+            Log.d(TAG,it)
+        })
+    }
+
+
+    fun ordersObservers(){
+        viewModel.profileOrdersLiveData.observe(viewLifecycleOwner,{
+            Log.d(TAG,it.toString())
+            orderAdapter.submitList(it)
+
+        })
+        viewModel.profileOrdersLiveDataError.observe(viewLifecycleOwner,{
+            Log.d(TAG,it)
+            Toast.makeText(requireActivity(), "it", Toast.LENGTH_SHORT).show()
         })
     }
 }

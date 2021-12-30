@@ -16,7 +16,6 @@ import com.example.tailor.R
 import com.example.tailor.databinding.ActivityMainBinding
 import com.example.tailor.util.getCityName
 import com.example.tailor.views.orders.AddActivity
-import com.example.tailor.views.orders.AddDesignFragment
 import com.google.android.gms.location.LocationServices
 import java.lang.Exception
 

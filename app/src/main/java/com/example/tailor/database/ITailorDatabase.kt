@@ -5,6 +5,7 @@ import com.example.tailor.model.user.Orders
 import com.example.tailor.model.user.UserModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.QuerySnapshot
 
 
 interface ITailorDatabase {
@@ -17,9 +18,9 @@ interface ITailorDatabase {
 
     suspend fun addOrder(orderModel: Orders): Task<Void>
 
-    suspend fun getOrders()
+    suspend fun getOrders():Task<QuerySnapshot>
 
-    suspend fun deleteOrder(orderModel: Orders,docId: String)
+    suspend fun deleteOrder(docId:String):Task<Void>
 
     suspend fun addBodyMeasurement(bodyMeasurement: BodyMeasurement):Task<Void>
 

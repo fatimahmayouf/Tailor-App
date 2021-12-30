@@ -9,13 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.tailor.R
 import com.example.tailor.databinding.FragmentOrderBinding
 import com.example.tailor.model.user.Orders
 import com.example.tailor.util.setStatusBarColor
 import com.example.tailor.views.ExploreViewModel
-import com.example.tailor.views.user.OrderViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,6 +25,7 @@ class OrderFragment : Fragment() {
 
     val viewModel : ExploreViewModel by activityViewModels()
     val orderViewModel: OrderViewModel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,17 +45,18 @@ class OrderFragment : Fragment() {
         Log.d(TAG," this is image url: ${viewModel.exploreItemImg}")
         binding.exploreOrderPriceTxt.text = "${viewModel.exploreItemPrice} SAR"
 
-        val note = binding.noteEditText.text
+
         val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
         var currentDate = sdf.format(Date()).toString()
 
-        val model = Orders(currentDate,viewModel.exploreItemImg,viewModel.exploreItemPrice,note.toString())
+        val model = Orders(currentDate,viewModel.exploreItemImg,viewModel.exploreItemPrice, binding.noteEditText.text.toString())
         orderViewModel.addOrder(model)
 
         binding.OrderButton.setOnClickListener {
             observers()
             orderViewModel.addOrder(model)
             Log.d(TAG,"after calling add")
+            it.findNavController().popBackStack()
 
         }
     }

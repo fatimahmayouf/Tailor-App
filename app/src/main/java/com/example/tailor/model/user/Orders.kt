@@ -5,6 +5,7 @@ data class Orders(
     var orderImg: String? = null,
     var orderPrice: Double? = null,
     var orderNotes: String? = null,
-    var orderApproval: Boolean? = null
+    var orderApproval: Boolean? = null,
+    var docId: String = " "
 
 )

@@ -42,7 +42,6 @@ class ExploreFragment : Fragment() {
         exploreViewModel.explorePhotoLiveData
             .observe(viewLifecycleOwner, {
             it?.let {
-                //photoList = it.photos
                 exploreFragmentAdapter.submitList(it.photos)
                 Log.d(TAG,it.photos.toString())
 
