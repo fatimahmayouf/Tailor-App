@@ -37,9 +37,6 @@ class LoginFragment : Fragment() {
                 .replace(R.id.login_layout,registerFragment)
                 .commit()
 
-            //fragmentManager?.popBackStack()
-
-
         }
         val email = binding.emailLogEditText.text
         val password = binding.passowrdLogEditText.text
@@ -50,7 +47,9 @@ class LoginFragment : Fragment() {
                     .addOnCompleteListener {
                             task -> if (task.isSuccessful){
                         Toast.makeText(requireContext(), "Logged in successfully", Toast.LENGTH_SHORT).show()
+                        // get information >> if userAdmin is true move to admin activity else move to user profile
                         requireActivity().supportFragmentManager.popBackStack()
+                       // requireActivity().finish()
                         //binding.loginLayout.visibility=View.GONE
                        /* requireActivity().supportFragmentManager.beginTransaction()
                             .replace(R.id.login_layout,ProfileFragment()).commit()*/

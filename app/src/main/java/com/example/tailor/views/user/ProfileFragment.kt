@@ -28,7 +28,7 @@ class ProfileFragment : Fragment() {
     var isExpandedSize = true
     var isExpandedOrders = true
 
-    val orderList = listOf<Orders>()
+   // val orderList = listOf<Orders>()
     lateinit var orderAdapter: OrderListAdapter
 
     override fun onCreateView(
@@ -213,9 +213,18 @@ class ProfileFragment : Fragment() {
             orderAdapter.submitList(it)
 
         })
+        viewModel.getUserOrders()
         viewModel.profileOrdersLiveDataError.observe(viewLifecycleOwner,{
             Log.d(TAG,it)
             Toast.makeText(requireActivity(), "it", Toast.LENGTH_SHORT).show()
         })
     }
+    fun deleteObservers(){
+        viewModel.deleteOrderLiveData.observe(viewLifecycleOwner,{
+            Log.d(TAG,it.toString())
+            //orderAdapter.deleteItem(it.docId)
+            orderAdapter.submitList(it)
+        })
+        }
+
 }

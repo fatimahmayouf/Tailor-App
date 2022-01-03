@@ -1,8 +1,6 @@
 package com.example.tailor.views.user
 
-import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
+
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,26 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.tailor.R
 import com.example.tailor.database.TailorDataBase
 import com.example.tailor.databinding.FragmentRegisterBinding
 import com.example.tailor.model.user.BodyMeasurement
 import com.example.tailor.model.user.UserModel
-import com.example.tailor.repositories.ApiRepositoryServices
 import com.example.tailor.repositories.DatabaseRepository
 import com.example.tailor.util.Validator
-import com.example.tailor.util.getCityName
-import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.lang.Exception
-import kotlin.concurrent.fixedRateTimer
+
 
 private const val TAG = "RegisterFragment"
 class RegisterFragment : Fragment() {
@@ -100,6 +89,7 @@ class RegisterFragment : Fragment() {
                                             )
                                                 .addOnSuccessListener {
                                                     Log.d(TAG, "registered successfully")
+                                                    //requireActivity().finish()
                                                 }
                                                 .addOnFailureListener { e ->
                                                     Log.w(

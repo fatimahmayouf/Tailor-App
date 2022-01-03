@@ -1,6 +1,5 @@
-package com.example.tailor.views
+package com.example.tailor.views.main
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

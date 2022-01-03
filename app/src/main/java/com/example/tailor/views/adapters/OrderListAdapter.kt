@@ -34,14 +34,7 @@ class OrderListAdapter(val context: Context, val viewModel: ProfileViewModel) : 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderListAdapter.OrderListViewHolder {
         val binding = OrdersItemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return OrderListViewHolder(binding)
-
-
     }
-    fun deleteItem(position: Int){
-        Log.d(TAG,"this is the position $position")
-        viewModel.deleteUserOrder()
-    }
-
 
     override fun onBindViewHolder(holder: OrderListViewHolder, position: Int) {
         val item = differ.currentList[position]
@@ -50,16 +43,19 @@ class OrderListAdapter(val context: Context, val viewModel: ProfileViewModel) : 
         when(position % 2 == 0){
             true -> {holder.itemView.setBackgroundColor(Color.WHITE)}
             false -> holder.itemView.setBackgroundColor(android.R.color.background_light.toInt())
-
         }
+
         holder.binding.orderListCancelButton.setOnClickListener {
-            Toast.makeText(context, "clicked and :$position", Toast.LENGTH_SHORT).show()
-
+            Toast.makeText(context, "your order has been deleted", Toast.LENGTH_SHORT).show()
             Log.d(TAG,position.toString())
-            deleteItem(position)
 
+            val difList = mutableListOf<Orders>()
+            difList.addAll(differ.currentList)
+            //viewModel.deleteUserOrder(item.docId)
+            viewModel.deleteUserOrder(difList[position].docId)
+            difList.removeAt(position)
+            differ.submitList(difList)
         }
-
     }
 
     override fun getItemCount(): Int {

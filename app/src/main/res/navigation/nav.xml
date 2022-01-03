@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.tailor.views.HomeFragment"
+        android:name="com.example.tailor.views.main.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/exploreFragment"
-        android:name="com.example.tailor.views.ExploreFragment"
+        android:name="com.example.tailor.views.main.ExploreFragment"
         android:label="fragment_explore"
         tools:layout="@layout/fragment_explore" >
         <action

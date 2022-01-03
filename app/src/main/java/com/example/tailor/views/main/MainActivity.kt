@@ -1,4 +1,4 @@
-package com.example.tailor.views
+package com.example.tailor.views.main
 
 
 import android.content.Context
@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //----------------get user location(latitude and longitude)--------------
         var fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
@@ -54,8 +56,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
 
             //-------- navigation bottom--------------
         binding.bottomNavView.background = null // because I've got something weired in background

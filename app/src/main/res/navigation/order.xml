@@ -10,20 +10,20 @@
         android:label="fragment_add_design"
         tools:layout="@layout/fragment_add_design" >
         <action
-            android:id="@+id/action_addDesignFragment_to_drawingBoardFragment"
-            app:destination="@id/drawingBoardFragment" />
-        <action
             android:id="@+id/action_addDesignFragment_to_orderCameraFragment"
             app:destination="@id/orderCameraFragment" />
+        <action
+            android:id="@+id/action_addDesignFragment_to_drawFragment"
+            app:destination="@id/drawFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/drawingBoardFragment"
-        android:name="com.example.tailor.views.orders.DrawingBoardFragment"
-        android:label="fragment_drawing_board"
-        tools:layout="@layout/fragment_drawing_board" />
     <fragment
         android:id="@+id/orderCameraFragment"
         android:name="com.example.tailor.views.orders.OrderCameraFragment"
         android:label="fragment_order_camera"
         tools:layout="@layout/fragment_order_camera" />
+    <fragment
+        android:id="@+id/drawFragment"
+        android:name="com.example.tailor.views.orders.DrawFragment"
+        android:label="fragment_draw"
+        tools:layout="@layout/fragment_draw" />
 </navigation>

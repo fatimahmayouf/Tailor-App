@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.tailor.R
 import com.example.tailor.databinding.HomeItemLayoutBinding
 import com.example.tailor.model.home.HomePhotoModel
-import com.example.tailor.views.HomeViewModel
+import com.example.tailor.views.main.HomeViewModel
 
 private const val TAG = "HomeFragmentAdapter"
 

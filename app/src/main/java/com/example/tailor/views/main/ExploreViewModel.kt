@@ -1,4 +1,4 @@
-package com.example.tailor.views
+package com.example.tailor.views.main
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
 import com.example.tailor.databinding.ExploreItemLayoutBinding
-import com.example.tailor.views.ExploreViewModel
+import com.example.tailor.views.main.ExploreViewModel
 
 private const val TAG = "ExploreAdapter"
 class ExploreAdapter(val context: Context, val viewModel: ExploreViewModel) :

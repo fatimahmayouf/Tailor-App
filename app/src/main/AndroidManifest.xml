@@ -16,11 +16,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tailor">
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/file_path">
+        </meta-data>
         <activity
             android:name=".views.orders.AddActivity"
             android:exported="false" />
         <activity
-            android:name=".views.Splash"
+            android:name=".views.main.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.MainActivity"
+            android:name=".views.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,6 +41,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="com.example.tailor.views.orders"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_path"/>
+        </provider>
     </application>
 
 </manifest>

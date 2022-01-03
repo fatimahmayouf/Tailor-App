@@ -26,7 +26,7 @@ class AddDesignFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val drawingBoardFragment = DrawingBoardFragment()
+        //val drawingBoardFragment = DrawingBoardFragment()
         val orderCameraFragment = OrderCameraFragment()
         var addDesignFragment = AddDesignFragment()
 
@@ -40,7 +40,7 @@ class AddDesignFragment : Fragment() {
         }
 
         binding.drawDesignBtn.setOnClickListener {
-           it.findNavController().navigate(R.id.action_addDesignFragment_to_drawingBoardFragment)
+           it.findNavController().navigate(R.id.action_addDesignFragment_to_drawFragment)
            /* requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.addDesign_layout,drawingBoardFragment)
                 .commit()*/

@@ -11,12 +11,15 @@ import com.example.tailor.model.user.UserModel
 import com.example.tailor.repositories.DatabaseRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.model.Document
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.internal.notifyAll
 import java.lang.Exception
 
 private const val TAG = "ProfileViewModel"
+
 class ProfileViewModel:ViewModel() {
 
     val databaseService = DatabaseRepository.get()
@@ -29,7 +32,8 @@ class ProfileViewModel:ViewModel() {
 
     val profileOrdersLiveData = MutableLiveData<List<Orders>>()
     val profileOrdersLiveDataError = MutableLiveData<String>()
-    val deleteOrderLiveData = MutableLiveData<Orders>()
+
+    val deleteOrderLiveData = MutableLiveData<List<Orders>>()
     val deleteOrderLiveDataError = MutableLiveData<String>()
 
     fun getProfileInfo() {
@@ -98,8 +102,16 @@ class ProfileViewModel:ViewModel() {
                 val response = databaseService.getOrders()
                response.addOnSuccessListener {
                    for (dc: DocumentChange in it.documentChanges){
+
                        if(dc.type == DocumentChange.Type.ADDED){
                            list.add(dc.document.toObject(Orders::class.java))
+                           for(i in list){
+                               i.docId = dc.document.id
+                               TailorDataBase.Usercollection.document(FirebaseAuth.getInstance().currentUser!!.uid).collection("Orders")
+                                   .document(dc.document.id).update("docId",dc.document.id)
+                                   //.set(i, SetOptions.merge())
+                               //يضيف ويسوي حركات غريبة
+                           }
                        }
                    }
                    profileOrdersLiveData.postValue(list)
@@ -115,13 +127,21 @@ class ProfileViewModel:ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                val response = databaseService.deleteOrder(docId)
-                response.addOnSuccessListener {
-                    deleteOrderLiveData.postValue(Orders())
+             /*   response.addOnCompleteListener {
+                    //TODO
+                    if (it.isSuccessful) {
+                        deleteOrderLiveData.postValue(Orders())
+                    } else {
+                        deleteOrderLiveDataError.postValue(it.exception?.message)
+                        Log.d(TAG,it.exception?.message.toString())
+                    }
+                }*/
+               response.addOnSuccessListener {
+                   deleteOrderLiveData.postValue(listOf(Orders()))
                     //Log.d(TAG,docId)
-
                 }.addOnFailureListener {
                     deleteOrderLiveDataError.postValue(it.message)
-                    Log.d(TAG,it.message.toString())
+                     Log.d(TAG,it.message.toString())
                 }
             }catch (e: Exception){
                 deleteOrderLiveDataError.postValue(e.message)

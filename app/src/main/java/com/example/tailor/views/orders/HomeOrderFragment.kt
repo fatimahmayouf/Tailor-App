@@ -13,7 +13,7 @@ import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.tailor.databinding.FragmentHomeOrderBinding
 import com.example.tailor.model.user.Orders
-import com.example.tailor.views.HomeViewModel
+import com.example.tailor.views.main.HomeViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -46,8 +46,6 @@ class HomeOrderFragment : Fragment() {
         var currentDate = sdf.format(Date()).toString()
 
         val model = Orders(currentDate,homeViewModel.homeItemImg,homeViewModel.homeItemPrice, binding.homeNoteEditText.text.toString())
-        orderViewModel.addOrder(model)
-
         binding.homeOrderButton.setOnClickListener {
 
             observers()
@@ -70,18 +68,7 @@ class HomeOrderFragment : Fragment() {
         orderViewModel.errorOrderLiveData.observe(viewLifecycleOwner,{
            Log.d(TAG,it)
             Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
-        })/*
-        orderViewModel.orderLiveData.observe(viewLifecycleOwner,{
-        *//*    viewModel.exploreItemImg = it.orderImg.toString()
-            viewModel.exploreItemPrice = it.orderPrice!!.toDouble()*//*
-
-            Toast.makeText(requireContext(), "your order has been added", Toast.LENGTH_SHORT).show()
-
         })
-        orderViewModel.errorOrderLiveData.observe(viewLifecycleOwner,{
-            //Log.d(TAG, it)
-            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
-        })*/
 
     }
 

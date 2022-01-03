@@ -15,7 +15,7 @@ import com.example.tailor.R
 import com.example.tailor.databinding.FragmentOrderBinding
 import com.example.tailor.model.user.Orders
 import com.example.tailor.util.setStatusBarColor
-import com.example.tailor.views.ExploreViewModel
+import com.example.tailor.views.main.ExploreViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -50,7 +50,6 @@ class OrderFragment : Fragment() {
         var currentDate = sdf.format(Date()).toString()
 
         val model = Orders(currentDate,viewModel.exploreItemImg,viewModel.exploreItemPrice, binding.noteEditText.text.toString())
-        orderViewModel.addOrder(model)
 
         binding.OrderButton.setOnClickListener {
             observers()
