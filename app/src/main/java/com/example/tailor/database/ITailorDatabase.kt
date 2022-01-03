@@ -7,6 +7,7 @@ import com.example.tailor.model.user.UserModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.storage.FileDownloadTask
 import com.google.firebase.storage.UploadTask
 import java.io.File
 
@@ -32,4 +33,6 @@ interface ITailorDatabase {
     suspend fun updateBodyMeasurement(bodyMeasurement:Map<String,Double>)
 
     suspend fun uploadImage(img: File):UploadTask
+
+    suspend fun getLocalFile() : FileDownloadTask
 }

@@ -16,7 +16,6 @@ class OrderViewModel:ViewModel() {
 
     val databaseService = DatabaseRepository.get()
 
-
     val orderLiveData = MutableLiveData<Orders>()
     val errorOrderLiveData = MutableLiveData<String>()
     val uplaodOrderLiveData = MutableLiveData<Orders>()
@@ -61,6 +60,10 @@ class OrderViewModel:ViewModel() {
                 Log.d(TAG,e.message.toString())
             }
         }
+
+    }
+
+    fun getLocalImage(){
 
     }
 }

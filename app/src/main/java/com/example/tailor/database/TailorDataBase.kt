@@ -20,25 +20,22 @@ object TailorDataBase {
     val userSize = user.collection("userId Size").document("measurement")
 
 
-    /*Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
-    StorageReference riversRef = storageRef.child("images/rivers.jpg");
-
-    riversRef.putFile(file)
-    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+   /* File localFile = File.createTempFile("images", "jpg");
+    riversRef.getFile(localFile)
+    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
         @Override
-        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-            // Get a URL to the uploaded content
-            Uri downloadUrl = taskSnapshot.getDownloadUrl();
-        }
-    })
-    .addOnFailureListener(new OnFailureListener() {
-        @Override
-        public void onFailure(@NonNull Exception exception) {
-            // Handle unsuccessful uploads
+        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+            // Successfully downloaded data to local file
             // ...
         }
-    });*/
-
+    }).addOnFailureListener(new OnFailureListener() {
+        @Override
+        public void onFailure(@NonNull Exception exception) {
+            // Handle failed download
+            // ...
+        }
+    });
+*/
 
 
 

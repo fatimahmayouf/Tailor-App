@@ -75,7 +75,8 @@ class OrderListAdapter(val context: Context, val viewModel: ProfileViewModel) : 
 
             if(item.orderApproval == null){
                 binding.approvalTxt.text = "Waiting for approval ..."
-                binding.approvalTxt.setBackgroundColor(Color.BLUE)
+               // binding.approvalTxt.setBackgroundColor(Color.BLUE)
+                binding.approvalTxt.setTextColor(Color.BLUE)
 
 
             }else if(item.orderApproval == true){

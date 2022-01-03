@@ -12,6 +12,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.SetOptions
+import com.google.firebase.storage.FileDownloadTask
 import com.google.firebase.storage.UploadTask
 import java.io.File
 import java.lang.Exception
@@ -89,6 +90,12 @@ class DatabaseRepository(context: Context):ITailorDatabase{
         var img = Uri.fromFile(imgFile)
         var storageRef = TailorDataBase.fireStorage.child("images/userIDTime.jpg")
        val task =  storageRef.putFile(img)
+        return task
+    }
+
+    override suspend fun getLocalFile(): FileDownloadTask  {
+        var localFile = File.createTempFile("images", "jpg")
+        val task = TailorDataBase.fireStorage.getFile(localFile)
         return task
     }
 
