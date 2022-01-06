@@ -5,6 +5,7 @@ import android.net.Uri
 import android.util.Log
 import com.example.tailor.database.ITailorDatabase
 import com.example.tailor.database.TailorDataBase
+import com.example.tailor.model.user.AdminFullOrders
 import com.example.tailor.model.user.BodyMeasurement
 import com.example.tailor.model.user.Orders
 import com.example.tailor.model.user.UserModel
@@ -19,6 +20,7 @@ import java.lang.Exception
 import java.util.*
 
 private const val TAG = "DatabaseRepository"
+private const val ADMIN_ID = "MaSLaecHIFaHQlKxWDo1ojN8hLI2"
 class DatabaseRepository(context: Context):ITailorDatabase{
 
     override suspend fun registerUser(
@@ -93,9 +95,23 @@ class DatabaseRepository(context: Context):ITailorDatabase{
         return task
     }
 
+    override suspend fun addOrderAdmin(orderModel: AdminFullOrders):Task<Void> {
+        val task =TailorDataBase.Usercollection
+            .document(ADMIN_ID).collection("Orders")
+            .document().set(orderModel)
+
+        return task
+    }
+
     override suspend fun getLocalFile(): FileDownloadTask  {
         var localFile = File.createTempFile("images", "jpg")
         val task = TailorDataBase.fireStorage.getFile(localFile)
+        return task
+    }
+
+    override suspend fun updateOrder(orderModel: Orders, approval: Boolean): Task<Void> {
+        var task =TailorDataBase.Usercollection.document(TailorDataBase.firebaseAuth.currentUser!!.uid)
+            .update("orderApproval",approval)
         return task
     }
 

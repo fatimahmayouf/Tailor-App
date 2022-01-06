@@ -7,10 +7,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.tailor.R
 import com.example.tailor.databinding.OrdersItemLayoutBinding
 import com.example.tailor.model.user.Orders
 import com.example.tailor.views.user.ProfileViewModel
@@ -18,6 +21,11 @@ import com.example.tailor.views.user.ProfileViewModel
 
 private const val TAG = "OrderListAdapter"
 class OrderListAdapter(val context: Context, val viewModel: ProfileViewModel) : RecyclerView.Adapter<OrderListAdapter.OrderListViewHolder>(){
+
+    val CHANNEL_ID = "Channel id"
+    val CHANNEL_NAME = "Channel name"
+    val NOTIFICATION_ID = 0
+    val notificationManager = NotificationManagerCompat.from(context)
 
     val DiffUtil = object : DiffUtil.ItemCallback<Orders>(){
         override fun areItemsTheSame(oldItem: Orders, newItem: Orders): Boolean {
@@ -56,6 +64,8 @@ class OrderListAdapter(val context: Context, val viewModel: ProfileViewModel) : 
             difList.removeAt(position)
             differ.submitList(difList)
         }
+
+
     }
 
     override fun getItemCount(): Int {
@@ -82,10 +92,27 @@ class OrderListAdapter(val context: Context, val viewModel: ProfileViewModel) : 
             }else if(item.orderApproval == true){
                  binding.approvalTxt.text = " Approved"
                  binding.approvalTxt.setBackgroundColor(Color.GREEN)
+                    val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+                        .setContentTitle("Order Approval")
+                        .setContentText("Your order has been approved")
+                        .setSmallIcon(R.drawable.ic_baseline_notifications_24)
+                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                        .build()
+                    notificationManager.notify(NOTIFICATION_ID, notification)
 
             }else{
                 binding.approvalTxt.text = "Rejected"
                 binding.approvalTxt.setBackgroundColor(Color.RED)
+
+
+                val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+                    .setContentTitle("Order Rejected!")
+                    .setContentText("Your order has been rejected, check your email for more details")
+                    .setSmallIcon(R.drawable.ic_baseline_notifications_24)
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .build()
+                notificationManager.notify(NOTIFICATION_ID, notification)
+
             }
             Glide.with(context).load(item.orderImg).into(binding.orderListImgView)
         }

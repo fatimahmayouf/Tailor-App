@@ -19,6 +19,7 @@ class HomeViewModel: ViewModel() {
 
     var homeItemPrice: Double= 0.00
     var homeItemImg: String = " "
+    var imageArray = arrayListOf<String>()
 
     fun getHomePhoto(){
         try {

@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tailor.model.user.AdminFullOrders
 import com.example.tailor.model.user.Orders
 import com.example.tailor.repositories.DatabaseRepository
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +19,10 @@ class OrderViewModel:ViewModel() {
 
     val orderLiveData = MutableLiveData<Orders>()
     val errorOrderLiveData = MutableLiveData<String>()
+
+    val orderAdminLiveData = MutableLiveData<AdminFullOrders>()
+    val errorAdminOrderLiveData = MutableLiveData<String>()
+
     val uplaodOrderLiveData = MutableLiveData<Orders>()
     val uploadErrorLiveData = MutableLiveData<String>()
 
@@ -65,5 +70,25 @@ class OrderViewModel:ViewModel() {
 
     fun getLocalImage(){
 
+    }
+
+    fun addAdminOrders(orderModel: AdminFullOrders){
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                databaseService.addOrderAdmin(orderModel).addOnSuccessListener {
+                    orderAdminLiveData.postValue(orderModel)
+                    Log.d(TAG,orderModel.toString())
+
+                }.addOnFailureListener {
+                    errorAdminOrderLiveData.postValue(it.message.toString())
+                    Log.d(TAG,it.message.toString())
+
+                }
+            }catch (e:Exception){
+                errorAdminOrderLiveData.postValue(e.message.toString())
+                Log.d(TAG,e.message.toString())
+            }
+
+        }
     }
 }

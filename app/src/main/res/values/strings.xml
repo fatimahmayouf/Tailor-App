@@ -31,4 +31,6 @@
     <string name="sleeveSize">Sleeve</string>
     <string name="lengthSize">Length</string>
     <string name="Cancel_order">Cancel my order</string>
+    <string name="approval">Approve</string>
+    <string name="reject">Reject</string>
 </resources>

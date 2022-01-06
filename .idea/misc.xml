@@ -35,6 +35,7 @@
         <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/activity_splash.xml" value="0.15353260869565216" />
         <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/explore_item_layout.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/fragment_add_design.xml" value="0.16077898550724637" />
+        <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/fragment_admin.xml" value="0.13632246376811594" />
         <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/fragment_draw.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/fragment_drawing_board.xml" value="0.16077898550724637" />
         <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/fragment_explore.xml" value="0.17481884057971014" />
@@ -43,11 +44,12 @@
         <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/fragment_login.xml" value="0.1598731884057971" />
         <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/fragment_order.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/fragment_order_camera.xml" value="0.17552083333333332" />
-        <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/fragment_profile.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/fragment_profile.xml" value="0.12" />
         <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/fragment_register.xml" value="0.16077898550724637" />
         <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/fragment_update_user_info.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/home_item_layout.xml" value="0.15670289855072464" />
         <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/orders_item_layout.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/ordersadmin_item_layout.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/ftmmt/Desktop/Tailor-App/app/src/main/res/layout/paint_view.xml" value="0.16077898550724637" />
       </map>
     </option>

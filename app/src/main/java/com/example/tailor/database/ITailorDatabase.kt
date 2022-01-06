@@ -1,6 +1,6 @@
 package com.example.tailor.database
 
-import android.net.Uri
+import com.example.tailor.model.user.AdminFullOrders
 import com.example.tailor.model.user.BodyMeasurement
 import com.example.tailor.model.user.Orders
 import com.example.tailor.model.user.UserModel
@@ -35,4 +35,8 @@ interface ITailorDatabase {
     suspend fun uploadImage(img: File):UploadTask
 
     suspend fun getLocalFile() : FileDownloadTask
+
+    suspend fun addOrderAdmin(orderModel:AdminFullOrders): Task<Void>
+
+    suspend fun updateOrder(orderModel: Orders, approval: Boolean):Task<Void>
 }

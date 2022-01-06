@@ -45,6 +45,11 @@ class HomeFragmentAdapter(val context: Context, val viewModel: HomeViewModel) :
 
         holder.itemView.setOnClickListener {
             viewModel.homeItemImg = item.url1
+            viewModel.imageArray.add(item.url1)
+            viewModel.imageArray.add(item.url2)
+            viewModel.imageArray.add(item.url3)
+
+            // url2 / url3
             viewModel.homeItemPrice = item.price.toDouble()
 
             it.findNavController().navigate(R.id.action_homeFragment_to_homeOrderFragment)

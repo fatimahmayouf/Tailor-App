@@ -1,6 +1,12 @@
 package com.example.tailor.views.user
 
 import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.Service
+import android.content.Context
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tailor.R
@@ -73,6 +80,7 @@ class ProfileFragment : Fragment() {
                 orderAdapter = OrderListAdapter(requireContext(),viewModel)
                 binding.orderRecyclerView.adapter = orderAdapter
                 viewModel.getUserOrders()
+                createNotificationChannel()
                 ordersObservers()
             }
         }
@@ -196,6 +204,8 @@ class ProfileFragment : Fragment() {
         })
     }
 
+
+
     fun bodySizeObservers(){
         viewModel.profileMeasurementLiveData.observe(viewLifecycleOwner,{
 
@@ -205,7 +215,6 @@ class ProfileFragment : Fragment() {
             Log.d(TAG,it)
         })
     }
-
 
     fun ordersObservers(){
         viewModel.profileOrdersLiveData.observe(viewLifecycleOwner,{
@@ -227,4 +236,22 @@ class ProfileFragment : Fragment() {
         })
         }
 
+
+    fun createNotificationChannel() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                orderAdapter.CHANNEL_ID,
+                orderAdapter.CHANNEL_NAME,
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                lightColor = Color.GREEN
+                enableLights(true)
+
+            }
+
+            val manager = requireActivity().getSystemService(NotificationManager::class.java)
+            manager.createNotificationChannel(channel)
+        }
+    }
 }
