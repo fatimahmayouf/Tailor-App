@@ -42,7 +42,6 @@ class OrderCameraFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //val addDesignFragment = AddDesignFragment()
         getPermission()
         pickImage()
     }
@@ -59,7 +58,7 @@ class OrderCameraFragment : Fragment() {
         }
 
         binding.OrderCameraButton.setOnClickListener {
-            orderViewModel.uploadImage(imgFile, Orders())//TODO
+            orderViewModel.uploadImage(imgFile, Orders())
             //observers
         }
     }
@@ -67,7 +66,7 @@ class OrderCameraFragment : Fragment() {
     fun pickImage(){
         Matisse.from(this).choose(MimeType.ofImage(),false)
             .capture(true)
-            .captureStrategy(CaptureStrategy(true,"com.example.tailor.views.orders"))
+            .captureStrategy(CaptureStrategy(true,"com.example.tailor"))
             .forResult(REQUEST_CODE)
     }
 

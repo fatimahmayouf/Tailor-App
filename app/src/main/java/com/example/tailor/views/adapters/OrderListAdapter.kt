@@ -117,5 +117,4 @@ class OrderListAdapter(val context: Context, val viewModel: ProfileViewModel) : 
             Glide.with(context).load(item.orderImg).into(binding.orderListImgView)
         }
     }
-
 }

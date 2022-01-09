@@ -42,7 +42,7 @@
             </intent-filter>
         </activity>
         <provider
-            android:authorities="com.example.tailor.views.orders"
+            android:authorities="com.example.tailor"
             android:name="androidx.core.content.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true">

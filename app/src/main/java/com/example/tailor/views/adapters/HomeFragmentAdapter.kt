@@ -19,8 +19,6 @@ private const val TAG = "HomeFragmentAdapter"
 class HomeFragmentAdapter(val context: Context, val viewModel: HomeViewModel) :
     RecyclerView.Adapter<HomeFragmentAdapter.HomeFragmentViewHolder>() {
 
-    //val viewModel = SharedViewModel()
-
     val DIFF_CALLBACK = object : DiffUtil.ItemCallback<HomePhotoModel>() {
         override fun areItemsTheSame(oldItem: HomePhotoModel, newItem: HomePhotoModel): Boolean {
             return oldItem.id == newItem.id

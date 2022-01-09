@@ -32,7 +32,7 @@ import java.util.*
 
 class DrawFragment : Fragment() {
 
-lateinit var binding: FragmentDrawBinding
+    lateinit var binding: FragmentDrawBinding
     var defaultColor: Int = 0
     lateinit var sigView: SignatureView
     lateinit var currentPhotoPath: String
@@ -176,8 +176,6 @@ lateinit var binding: FragmentDrawBinding
         fos.flush()
         fos.close()
         Toast.makeText(requireActivity(), "Painting saved", Toast.LENGTH_SHORT).show()
-
-
     }
 
 

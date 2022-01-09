@@ -1,91 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout2"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp"
-    tools:context=".views.orders.HomeOrderFragment">
+    tools:context=".views.orders.HomeOrderFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewOrder"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="20dp"
-        app:cardPreventCornerOverlap="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
 
-            <!--<ImageView
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewOrder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardPreventCornerOverlap="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!--<ImageView
                 android:id="@+id/home_order_img"
                 android:layout_width="286dp"
                 android:layout_height="274dp"
                 android:layout_marginTop="48dp"
                 android:scaleType="centerCrop"
                 tools:src="@tools:sample/avatars" />-->
-            <com.synnapps.carouselview.CarouselView
-                android:id="@+id/carouselView"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                app:fillColor="#FFFFFFFF"
-                app:pageColor="#00000000"
-                app:radius="6dp"
-                app:slideInterval="3000"
-                app:strokeColor="#FF777777"
-                app:strokeWidth="1dp" />
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/carouselView"
+                    android:layout_width="match_parent"
+                    android:layout_height="450dp"
+                    app:fillColor="#FFFFFFFF"
+                    app:pageColor="#00000000"
+                    app:radius="6dp"
+                    app:slideInterval="3000"
+                    app:strokeColor="#FF777777"
+                    app:strokeWidth="1dp" />
 
-            <TextView
-                android:id="@+id/home_order_price_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@string/price"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/home_order_price_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/price"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+            </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-    <EditText
-        android:id="@+id/home_note_EditText"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/notice"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewOrder" />
+        <EditText
+            android:id="@+id/home_note_EditText"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/notice"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewOrder" />
 
-    <Button
-        android:id="@+id/home_Order_button"
-        style="@style/EditTextDesign"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/order"
-        android:textColor="@color/white"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_note_EditText"
-        app:layout_constraintVertical_bias="0.0" />
+        <Button
+            android:id="@+id/home_Order_button"
+            style="@style/EditTextDesign"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/order"
+            android:textColor="@color/white"
+            app:cornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_note_EditText"
+            app:layout_constraintVertical_bias="0.0" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
