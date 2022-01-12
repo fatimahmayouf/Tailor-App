@@ -54,18 +54,17 @@ class OrderListAdapter(val context: Context, val viewModel: ProfileViewModel) : 
         }
 
         holder.binding.orderListCancelButton.setOnClickListener {
-            Toast.makeText(context, "your order has been deleted", Toast.LENGTH_SHORT).show()
             Log.d(TAG,position.toString())
 
             val difList = mutableListOf<Orders>()
             difList.addAll(differ.currentList)
             //viewModel.deleteUserOrder(item.docId)
-            viewModel.deleteUserOrder(difList[position].docId)
+            viewModel.deleteUserOrder(item.docId)
+            Toast.makeText(context, "your order has been deleted", Toast.LENGTH_SHORT).show()
+
             difList.removeAt(position)
             differ.submitList(difList)
         }
-
-
     }
 
     override fun getItemCount(): Int {

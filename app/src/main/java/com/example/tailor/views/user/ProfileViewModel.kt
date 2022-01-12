@@ -104,14 +104,16 @@ class ProfileViewModel:ViewModel() {
                    for (dc: DocumentChange in it.documentChanges){
 
                        if(dc.type == DocumentChange.Type.ADDED){
-                           list.add(dc.document.toObject(Orders::class.java))
-                           for(i in list){
-                               i.docId = dc.document.id
-                               TailorDataBase.Usercollection.document(FirebaseAuth.getInstance().currentUser!!.uid).collection("Orders")
-                                   .document(dc.document.id).update("docId",dc.document.id)
-                                   //.set(i, SetOptions.merge())
-                               //يضيف ويسوي حركات غريبة
-                           }
+                           var orderItem = dc.document.toObject(Orders::class.java)
+                           orderItem.docId = dc.document.id
+                           list.add(orderItem)
+
+//                           for(i in list){
+//                               i.docId = dc.document.id
+//                               TailorDataBase.Usercollection.document(FirebaseAuth.getInstance().currentUser!!.uid).collection("Orders")
+//                                   .document(dc.document.id).update("docId",dc.document.id)
+//                                   //.set(i, SetOptions.merge())
+//                           }
                        }
                    }
                    profileOrdersLiveData.postValue(list)

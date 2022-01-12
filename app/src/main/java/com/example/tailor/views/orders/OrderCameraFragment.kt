@@ -42,8 +42,13 @@ class OrderCameraFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getPermission()
+        //getPermission()
         pickImage()
+
+        binding.OrderCameraButton.setOnClickListener {
+            orderViewModel.uploadImage(imgFile, Orders())
+            //observers
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -57,10 +62,7 @@ class OrderCameraFragment : Fragment() {
             Glide.with(requireActivity()).load(imgFile).into(binding.cameraOrderImg)
         }
 
-        binding.OrderCameraButton.setOnClickListener {
-            orderViewModel.uploadImage(imgFile, Orders())
-            //observers
-        }
+
     }
 
     fun pickImage(){
@@ -72,7 +74,7 @@ class OrderCameraFragment : Fragment() {
 
     fun getPermission() {
         Dexter.withContext(requireContext())
-            .withPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .withPermission(android.Manifest.permission.CAMERA)
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(p0: PermissionGrantedResponse?) {
 
@@ -99,34 +101,7 @@ class OrderCameraFragment : Fragment() {
                             }).show()
                 }
             }).check()
-        Dexter.withContext(requireContext())
-            .withPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-            .withListener(object : PermissionListener {
-                override fun onPermissionGranted(p0: PermissionGrantedResponse?) {
 
-                }
-
-                override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
-                }
-
-                override fun onPermissionRationaleShouldBeShown(
-                    p0: PermissionRequest?,
-                    p1: PermissionToken?
-                ) {
-                    AlertDialog.Builder(requireContext())
-                        .setTitle("Allow permission")
-                        .setMessage("allow Tailor Application to access photos and files on your device?")
-                        .setNegativeButton("Cancel",
-                            DialogInterface.OnClickListener { dialogInterface, i ->
-                                dialogInterface.dismiss()
-                                p1?.cancelPermissionRequest()
-                            }).setPositiveButton("Ok",
-                            DialogInterface.OnClickListener { dialogInterface, i ->
-                                dialogInterface.dismiss()
-                                p1?.continuePermissionRequest()
-                            }).show()
-                }
-            }).check()
     }
 
     fun uploadObservers(){

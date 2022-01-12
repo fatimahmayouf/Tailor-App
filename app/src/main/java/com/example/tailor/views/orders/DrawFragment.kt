@@ -3,10 +3,12 @@ package com.example.tailor.views.orders
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +25,7 @@ import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import com.kyanogen.signatureview.SignatureView
+import com.zhihu.matisse.Matisse
 import yuku.ambilwarna.AmbilWarnaDialog
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -30,6 +33,7 @@ import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
+private const val TAG = "DrawFragment"
 class DrawFragment : Fragment() {
 
     lateinit var binding: FragmentDrawBinding
@@ -79,10 +83,17 @@ class DrawFragment : Fragment() {
                 saveImage()
                 val intent = Intent()
                 intent.action = Intent.ACTION_SEND
-                val photoUri: Uri = FileProvider.getUriForFile(requireContext(), "com.example.tailor.views.orders", createImageFile())
-                //var uri2 = BitmapFactory.decodeFile(currentPhotoPath)
+
+                val imgePath = Matisse.obtainPathResult(intent)[0]
+                val imgFile = File(imgePath)
+                //val photoUri: Uri = FileProvider.getUriForFile(requireContext(), "com.example.tailor", saveImage())
+                //Log.d(TAG,photoUri.toString())
+                //val uri = BitmapFactory.decodeFile(currentPhotoPath)
+                //Log.d(TAG,uri.toString())
                // val uri = Uri.parse(currentPhotoPath)
-                intent.putExtra(Intent.EXTRA_STREAM,photoUri)
+                //intent.putExtra(Intent.EXTRA_STREAM,photoUri)
+                intent.putExtra(Intent.EXTRA_STREAM,imgFile)
+
                 intent.type = "image/*"
                 startActivity(Intent.createChooser(intent, "share to ..."))
             }
@@ -156,14 +167,13 @@ class DrawFragment : Fragment() {
             override fun onOk(dialog: AmbilWarnaDialog?, color: Int) {
                 defaultColor = color
                 sigView.penColor = color
-
             }
 
         })
         amb.show()
     }
-    fun saveImage(){
 
+    fun saveImage(): File{
 
         //var file = File("${createImageFile()}")
         val bitmap = sigView.signatureBitmap
@@ -171,17 +181,19 @@ class DrawFragment : Fragment() {
         bitmap.compress(Bitmap.CompressFormat.PNG,0,bos)
         var bitmapData = bos.toByteArray()
 
-        var fos = FileOutputStream(createImageFile())
-        fos.write(bitmapData)
-        fos.flush()
-        fos.close()
+        FileOutputStream(createImageFile()).apply {
+            write(bitmapData)
+            flush()
+            close()
+        }
+
         Toast.makeText(requireActivity(), "Painting saved", Toast.LENGTH_SHORT).show()
-    }
+        return createImageFile()
+        }
 
 
     private fun createImageFile(): File {
 
-        // create an Image Name
         val timestamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val storageDir: File? = requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         //the up method give whole absolute path with its package name
@@ -192,6 +204,5 @@ class DrawFragment : Fragment() {
         ).apply {
             currentPhotoPath = absolutePath// full path from the base
         }
-
     }
 }

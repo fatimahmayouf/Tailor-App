@@ -225,7 +225,7 @@ class ProfileFragment : Fragment() {
         viewModel.getUserOrders()
         viewModel.profileOrdersLiveDataError.observe(viewLifecycleOwner,{
             Log.d(TAG,it)
-            Toast.makeText(requireActivity(), "it", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
         })
     }
     fun deleteObservers(){
