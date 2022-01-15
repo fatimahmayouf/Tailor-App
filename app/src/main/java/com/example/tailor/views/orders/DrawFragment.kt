@@ -84,15 +84,17 @@ class DrawFragment : Fragment() {
                 val intent = Intent()
                 intent.action = Intent.ACTION_SEND
 
-                val imgePath = Matisse.obtainPathResult(intent)[0]
-                val imgFile = File(imgePath)
+               // currentPhotoPath = Matisse.obtainPathResult(intent)[0]
+                val imgFile = File(currentPhotoPath)
+
+
                 //val photoUri: Uri = FileProvider.getUriForFile(requireContext(), "com.example.tailor", saveImage())
                 //Log.d(TAG,photoUri.toString())
                 //val uri = BitmapFactory.decodeFile(currentPhotoPath)
                 //Log.d(TAG,uri.toString())
                // val uri = Uri.parse(currentPhotoPath)
                 //intent.putExtra(Intent.EXTRA_STREAM,photoUri)
-                intent.putExtra(Intent.EXTRA_STREAM,imgFile)
+                intent.putExtra(Intent.EXTRA_STREAM,saveImage())
 
                 intent.type = "image/*"
                 startActivity(Intent.createChooser(intent, "share to ..."))

@@ -1,6 +1,7 @@
 package com.example.tailor.views.adaptersimport
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
@@ -41,6 +42,17 @@ class HomeFragmentAdapter(val context: Context, val viewModel: HomeViewModel) :
         holder.bind(item)
         Log.d(TAG,item.toString())
 
+        holder.binding.imageButton.setOnClickListener {
+            val intent = Intent()
+            intent.apply {
+                type = " image/*"
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT,item.url1)
+            }
+            context.startActivity(Intent.createChooser(intent, "share to ..."))
+
+        }
+
         holder.itemView.setOnClickListener {
             viewModel.homeItemImg = item.url1
             viewModel.imageArray.add(item.url1)
@@ -51,9 +63,6 @@ class HomeFragmentAdapter(val context: Context, val viewModel: HomeViewModel) :
             viewModel.homeItemPrice = item.price.toDouble()
 
             it.findNavController().navigate(R.id.action_homeFragment_to_homeOrderFragment)
-
-            //viewModel.exploreItem = item.id
-           // it.findNavController().navigate(R.id.action_homeFragment_to_orderFragment)
 
             /*val orderFragment = OrderFragment()
             val activity = it.context as AppCompatActivity
@@ -72,6 +81,7 @@ class HomeFragmentAdapter(val context: Context, val viewModel: HomeViewModel) :
    inner class HomeFragmentViewHolder(val binding: HomeItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
        fun bind(item: HomePhotoModel){
            Glide.with(context).load(item.url1).into(binding.homeImageView)
+
        }
     }
 }

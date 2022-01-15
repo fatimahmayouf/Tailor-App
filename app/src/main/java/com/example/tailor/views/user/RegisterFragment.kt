@@ -89,7 +89,8 @@ class RegisterFragment : Fragment() {
                                             )
                                                 .addOnSuccessListener {
                                                     Log.d(TAG, "registered successfully")
-                                                    //requireActivity().finish()
+                                                    requireActivity().supportFragmentManager
+                                                        .popBackStack()
                                                 }
                                                 .addOnFailureListener { e ->
                                                     Log.w(
