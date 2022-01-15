@@ -1,4 +1,4 @@
-# ![Logo](https://launch.sa/assets/images/logos/tuwaiq-academy-logo.svg) 
+### ![Logo](https://launch.sa/assets/images/logos/tuwaiq-academy-logo.svg) 
 
 # Tailor-App
 
