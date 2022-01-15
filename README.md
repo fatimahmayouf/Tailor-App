@@ -1,3 +1,5 @@
+# ![Logo](https://launch.sa/assets/images/logos/tuwaiq-academy-logo.svg) 
+
 # Tailor-App
 
 ## Technologies used
@@ -25,7 +27,7 @@
 
 ### Wireframes 
 
-![image](https://user-images.githubusercontent.com/46302686/149612007-c3e6ff94-096c-4c81-b33b-7b8dea85659c.png)
+### ![image](https://user-images.githubusercontent.com/46302686/149612007-c3e6ff94-096c-4c81-b33b-7b8dea85659c.png)
 
 
 
