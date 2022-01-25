@@ -21,7 +21,7 @@
 * User Can order a design either from home page which is belong to application  or a design from third party Api
 * User Can draw their own design and upload it 
 * User can upload specific design from camera or gallery
-* User can delete their order before they got the approval only
+* User can delete their order
 * User will got a notification when their orders approved 
 
 
