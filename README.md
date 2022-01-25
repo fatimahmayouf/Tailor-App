@@ -35,7 +35,7 @@
 ## Planning and story of development process
  As normal, Starting with UX/UI design using figma with help of tamplates. Second, implementing design part in android studio IDEs.
  Then, testing APIs that will be used in Postman to be sure that they are workig fine. After that, bulid the MVVM architecture to make the project
- organized. then, creating the firepase project and connect the application with it. final part is building the logic which spend the most time.
+ organized. then, creating the firebase project and connect the application with it. final part is building the logic which spend the most time.
  
  ## Problem-solving strategy
  Dividing project into tiny tasks is helping a lot to acheiveing the main funactionalities of project.But, still facing many bugs are epected.
