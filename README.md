@@ -52,6 +52,7 @@
 * Changing status bar color using extention function
 * Working with paint view
 * Working with carouselView 
+* Working with NoSql database
 
 ## Next Phase
 * Application will be community between real tailors and customers
