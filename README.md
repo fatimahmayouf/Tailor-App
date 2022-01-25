@@ -38,13 +38,13 @@
  organized. then, creating the firebase project and connect the application with it. final part is building the logic which spend the most time.
  
  ## Problem-solving strategy
- Dividing project into tiny tasks is helping a lot to acheiveing the main funactionalities of project.But, still facing many bugs are epected.
+ Dividing project into tiny tasks is helping a lot to acheive the main funactionalities of project.But, still facing many bugs are expected.
  So, with help of android developer website, stackoverflow, some youtube channel, and the most helpful team are the instractors.
 
 ## Unsolved problems which would be fixed in future iterations
 * Uploading Paint as image in firestore
 * Making seekbar in vertical and work in proper way
-* notification while application is closed 
+* Notification while application is closed 
 
 ## Favorite functions work
 * Upload image in firestore from user gallery
